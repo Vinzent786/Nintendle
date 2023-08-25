@@ -1,6 +1,4 @@
-let c = (x) => {return console.log(x)}
-
-c(`width: ${$(window).width()}px\nheight: ${$(window).height()}px`);
+const c = (x) => {return console.log(x)}
 
 let answer;
 function genAnswer() {
@@ -48,16 +46,21 @@ function genAnswer() {
 }
 genAnswer();
 
-let cols = answer.length;
-let rows;
-let guesses = 0;
-const $scores_container = $('#scores_container');
-const $hide_scores = $('#hide_scores');
-const $info_container = $('#info_container');
-const $hide_info = $('#hide_info');
-const $copy_icon = $('#copy_icon');
-let prevent_event = false; //Prevents keyboard event listener when needed
-let finished = false; //Prevents keyboard event listener after game is finished
+try {
+    let cols = answer.length;
+    let rows;
+    let guesses = 0;
+    const $scores_container = $('#scores_container');
+    const $hide_scores = $('#hide_scores');
+    const $info_container = $('#info_container');
+    const $hide_info = $('#hide_info');
+    const $copy_icon = $('#copy_icon');
+    let prevent_event = false; //Prevents keyboard event listener when needed
+    let finished = false; //Prevents keyboard event listener after game is finished
+} catch (err){
+    c(err)
+    c(answer)
+}
 
 //Draws game grid
 let drawGrid = () => {
