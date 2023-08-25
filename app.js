@@ -59,8 +59,9 @@ function genAnswer() {
                 showFranchise(key); //Calling the showFranchise this way stops the function from auto running
             });
             genLink(key, answer);
-        } catch (err) {
-            c(err);
+        } catch (err) { //Removes query from url and reloads site if there was an error with the sharable link
+            window.history.replaceState({}, document.title, url[0]); //Removes query param from url before reload
+            location.reload(true);
         }
     }
 }
