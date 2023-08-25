@@ -34,6 +34,7 @@ function genAnswer() {
             $('#answer_franchise').removeAttr('id');
         });
     } else if (url.length === 2) {//If site was loaded from a shared answer link, length of array will be 2
+        c(`URL - ${url}\nAnswer - ${answer}`)
         try {
             const decodedURIanswer = decodeURI(url[url.length -1].split('=')[url.length -1]); //Decodes query param URI component so it's just in base64 encoding
             const decodedB64answer = atob(decodedURIanswer); //Decodes query param from base64
@@ -46,21 +47,16 @@ function genAnswer() {
 }
 genAnswer();
 
-try {
-    let cols = answer.length;
-    let rows;
-    let guesses = 0;
-    const $scores_container = $('#scores_container');
-    const $hide_scores = $('#hide_scores');
-    const $info_container = $('#info_container');
-    const $hide_info = $('#hide_info');
-    const $copy_icon = $('#copy_icon');
-    let prevent_event = false; //Prevents keyboard event listener when needed
-    let finished = false; //Prevents keyboard event listener after game is finished
-} catch (err){
-    c(err)
-    c(answer)
-}
+let cols = answer.length;
+let rows;
+let guesses = 0;
+const $scores_container = $('#scores_container');
+const $hide_scores = $('#hide_scores');
+const $info_container = $('#info_container');
+const $hide_info = $('#hide_info');
+const $copy_icon = $('#copy_icon');
+let prevent_event = false; //Prevents keyboard event listener when needed
+let finished = false; //Prevents keyboard event listener after game is finished
 
 //Draws game grid
 let drawGrid = () => {
