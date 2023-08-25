@@ -1,8 +1,8 @@
 const c = (x) => {return console.log(x)}
 
 let answer;
+const url = window.location.href.split('?'); //Splits url by query, if there is one
 function genAnswer() {
-    const url = window.location.href.split('?'); //Splits url by query, if there is one
     if (url.length === 1) { //If site was not loaded from a shared answer link, there won't be query params
         const answers_obj = {
             'Zelda' : ['MEDLI', 'LINK', 'DINOLFOS', 'MOOSH', 'NABOORU', 'MINERU', 'FYSON', 'FARORE', 'KUKIEL', 'BIGGORON', 'KOUME', 'DAMPE', 'LANA', 'LEVIAS', 'ASHEI', 'BARNES', 'KILTON', 'KOMALI', 'CIELA', 'HESTU', 'MAPLE', 'MALO', 'MOON', 'HINOX', 'AURU', 'ERROR', 'MIKAU', 'DARBUS', 'BORVILLE', 'ARYLL', 'DIN', 'CARLOV', 'GHIRAHIM', 'EZLO', 'GONGORON', 'BELLUM', 'MALANYA', 'FAIRY', 'CYCLOS', 'MAGGIE', 'DANGORO', 'EPONA', 'GORKO', 'GULLEY', 'CAROCK', 'DEMISE', 'GROG', 'DARUNIA', 'COLIN', 'KAPSON', 'ASTOR', 'BLOSSOM', 'BIPIN', 'FARON', 'ALFONZO', 'BULIARA', 'MUTOH', 'NAVI', 'MIDO', 'JOSHA', 'NAYRU', 'GROOSE', 'ELDIN', 'DIMITRI', 'ANKLE', 'BARKLE', 'GREYSON', 'DARKNUT', 'MILA', 'ORDONA', 'GANON', 'GANONDORF', 'OCTAVO', 'GORIYA', 'DORIAN', 'LARUTO', 'BYRNE', 'AVEIL', 'MEDIGORON', 'ILIA', 'BEEDLE', 'KOTAKE', 'AGITHA', 'KASS', 'LINKLE', 'DARMANI', 'NIKO', 'IMPA', 'OOCCOO', 'LANAYRU', 'CADO', 'DARUK', 'HYLIA', 'LINEBECK', 'ZELDA', 'ANJU', 'INGO', 'MALON', 'BATREAUX', 'KOLTIN', 'CARPENTERS', 'PENN', 'AMALI', 'AGAHNIM', 'HARTH', 'FYER', 'ONOX', 'FADO', 'MAKAR', 'GRAMPS', 'ODOLWA', 'KAFEI', 'HUDSON', 'IRENE', 'MALLADUS', 'MIDNA', 'MARIN'],
@@ -37,8 +37,11 @@ function genAnswer() {
             const decodedURIanswer = decodeURIComponent(url[url.length -1].split('=')[url.length -1]); //Decodes query param URI component so it's just in base64 encoding
             const decodedB64answer = atob(decodedURIanswer); //Decodes query param from base64
             answer = decodedB64answer;
-        } catch {
-            location.reload(true);
+            // $('#answer_franchise').on('click', () => {
+            //     $('#answer_franchise')
+            // })
+        } catch (err) {
+            c(err);
         }
     }
 }
@@ -135,7 +138,10 @@ $(document).ready(function() {
     $('#clear_scores').on('click', clear_scores);
     $('#info_button').on('click', show_info);
     $('#hide_info').on('click', hide_info);
-    $('#play_again').on('click', () => location.reload(true));
+    $('#play_again').on('click', () => {
+        window.history(replaceState({}, document.title, url[0])); //Removes query param from url before reload
+        location.reload(true);
+    });
     $copy_icon.on('click', () => {
         $('#custom_link').select(); //Selects custom link 
         navigator.clipboard.writeText($('#custom_link').text()); //Writes custom link to clipboard
