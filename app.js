@@ -25,7 +25,7 @@ function genAnswer() {
         const keys = Object.keys(answers_obj);
         const random_key = keys[Math.floor(Math.random() * keys.length)]; //Random object key
         answer = answers_obj[random_key][Math.floor(Math.random() * answers_obj[random_key].length)]; //Answer is a random index from an array that is the value of the random key
-        c(answer, ' not loaded from cl');
+        c(`${answer} - not loaded from custom link`);
         $('#answer_franchise').on('click', () => { //Tells user which franchise the answer comes from
             $('#answer_franchise').text('');
             $('#answer_franchise').append(`<u>${random_key}</u>`);
@@ -38,7 +38,7 @@ function genAnswer() {
             const decodedURIanswer = decodeURI(url[url.length -1].split('=')[url.length -1]); //Decodes query param URI component so it's just in base64 encoding
             const decodedB64answer = atob(decodedURIanswer); //Decodes query param from base64
             answer = decodedB64answer;
-            c(answer, ' loaded from cl');
+            c(`${answer} - loaded from custom link`);
         } catch {
             location.reload(true);
         }
