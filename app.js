@@ -36,6 +36,7 @@ function genAnswer() {
         try {
             const decodedURIanswer = decodeURIComponent(url[url.length -1].split('=')[url.length -1]); //Decodes query param URI component so it's just in base64 encoding
             const decodedB64answer = atob(decodedURIanswer); //Decodes query param from base64
+            answer = decodedB64answer;
         } catch {
             location.reload(true);
         }
