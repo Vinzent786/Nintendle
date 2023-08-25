@@ -1,0 +1,573 @@
+:root {
+    --mainBackground: #060c0f;
+    --gridBackground: #010a0e;
+    --dialogBackground: #0d181f;
+    --green: #90EE90;
+    --yellow: #FDB44E;
+    --grey: #D3D3D3;
+    --white: #ffffff;
+    --red: #FF7377;
+    --blue: #59c2e6;
+    --kb-key: #949494;
+    --dark-grey: #4d4d4d;
+}
+
+html {
+    background-color: var(--mainBackground);
+}
+
+body {
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    margin: 0;
+  }
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* Header */
+#header {
+    border: 1px solid var(--white);
+    color: var(--white);
+    background-color: var(--dialogBackground);
+    display: flex;
+    align-items: center;
+    width: calc(100vw - 2px); 
+}
+
+#pikachu_img {
+    margin: auto auto -2.1rem 0;
+    position: absolute;
+    height: 4rem;
+    display: none;
+}
+
+h1 {
+    font-family: lilita-one;
+    font-size: 3.5rem;
+    margin: 1rem;
+}
+
+.title {margin-left: 1rem;}
+
+.right {
+    right: 0;
+    display: flex;
+    margin-right: 1rem;
+    position: absolute;
+}
+
+.right > button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.info-icon {
+    height: 1.5rem;
+    padding-top: .5rem;
+}
+
+#luigi_img {
+    height: 20rem;
+    position: fixed;
+    top: 7rem;
+    right: 0px;
+    z-index: -1;
+}
+
+#answer_franchise {
+    text-align: center;
+    color: var(--white);
+    font-family: bebas-neue;
+    font-size: 1.6rem;
+    max-width: fit-content;
+    margin: 1rem auto;
+}
+
+#answer_franchise_no_hover {
+    text-align: center;
+    color: var(--white);
+    font-family: bebas-neue;
+    font-size: 1.6rem;
+    max-width: fit-content;
+    margin: 1rem auto;
+}
+
+#answer_franchise:hover {
+    cursor: pointer;
+    scale: 1.1;
+    text-decoration: underline;
+}
+
+
+/* Game grid */
+#grid_container {
+    /* Grid template is assigned to this element in app.js's drawGrid function */
+    display: grid;
+    margin: auto;
+    margin-top: 1rem;
+    font-size: 3rem;
+    justify-content: center;
+    gap: 1rem;
+    max-width: calc(100vw - 100px);
+}
+
+#grid_container > * {
+    display: flex;
+    aspect-ratio: 1/1;
+    /* max-height: 10rem; */
+    outline: 1px solid var(--white);
+    text-align: center;
+    font-family: anton;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    background-color: var(--gridBackground);
+}
+
+#play_again {
+    background-color: var(--mainBackground);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    font-family: bebas-neue;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    margin-top: 1rem;
+    border-radius: .3rem;
+    z-index: -1;
+}
+
+#play_again:hover {outline: 1px solid var(--white);}
+
+dialog {
+    background-color: var(--dialogBackground);
+    color: var(--white);
+    z-index: 1;
+}
+
+#scores_container {
+    width: 25rem;
+    margin-top: .5rem;
+    z-index: 999;
+}
+
+#hide_scores, #hide_info {
+    background-color: var(--dialogBackground);
+    color: var(--white);
+    border: none;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    float: right;
+    cursor: pointer;
+    border-radius: .3rem;
+}
+
+#hide_scores:hover, #hide_info:hover {
+    background-color: var(--red);
+    scale: 1.2;
+}
+
+/* Scores */
+#scores_container > h2 {
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    font-family: lilita-one;
+    font-size: 3rem;
+}
+
+#scores_container > h3, h4 {
+font-family: lilita-one;
+text-align: center;
+}
+
+#scores_container > h3 {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 2rem;
+}
+
+#scores_container > h4 {
+    margin-top: 0;
+    font-size: 1.9rem;
+}
+
+#scores_container > div {
+    font-family: bebas-neue;
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
+#scores_container > #clear_scores {
+    background-color: var(--dialogBackground);
+    border: none;
+    color: var(--white);
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    float: right;
+    cursor: pointer;
+    font-family: bebas-neue;
+    border-radius: .3rem;
+}
+
+#scores_container > #clear_scores:hover {outline: 1px solid var(--white);}
+
+/* Fonts */
+@font-face {
+    font-family: bebas-neue;
+    src: url("fonts/Bebas_Neue/BebasNeue-Regular.ttf");
+}
+
+@font-face {
+    font-family: anton;
+    src: url("fonts/Anton/Anton-Regular.ttf");
+}
+
+@font-face {
+    font-family: lilita-one;
+    src: url("fonts/Lilita_One/LilitaOne-Regular.ttf");
+}
+
+.animate-green {animation: color-change-green 1s forwards;}
+
+.animate-yellow {animation: color-change-yellow 1s forwards;}
+
+.animate-grey {animation: color-change-grey 1s forwards;}
+
+.animate-dark-grey {animation: color-change-dark-grey 1s forwards;}
+
+.fade-in-out {animation: fade-in-out 2s forwards;}
+
+/* End dialog */
+#finish_dialog {
+    display: flex;
+    justify-content: center;
+    height: min-content;
+    padding: .3rem;
+    border: none;
+    outline: none;
+    background: none;
+    margin: 5rem auto;
+    background-color: var(--dialogBackground);
+    border-radius: 1rem;
+    outline: 1px solid var(--white);
+}
+
+#finish_dialog > button {
+    background-color: var(--dialogBackground);
+    border: none;
+    border-radius: 1rem;
+    color: var(--white);
+    font-family: bebas-neue;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3%;
+}
+
+#finish_dialog > button:hover {
+    background-color: var(--red);
+    cursor: pointer;
+}
+
+#finish_dialog > p {
+    font-family: bebas-neue;
+    font-size: 1.5rem;
+
+    margin: 0%;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Info */
+#info_container {
+    width: 25rem;
+    margin-top: .5rem;
+    z-index: 999;
+}
+
+#info_container > h5 {
+    font-family: lilita-one;
+    font-size: 2.5rem;
+    margin: 0;
+    border-bottom: 1px solid var(--white);
+    margin: auto;
+    width: min-content;
+}
+
+#info_container > p {font-size: 1.5rem;}
+
+a {color: var(--blue);}
+
+#discord_icon {
+    width: 5rem; 
+    display: block; 
+    margin: auto;
+}
+
+#discord_icon:hover {scale: 1.2;}
+
+
+/* Sharable link */
+
+#custom_link_container {
+    display: flex;
+    justify-content: center;
+    max-width: 100vw;
+}
+
+#custom_link_p {
+    color: var(--white);
+    font-size: 1.3rem;
+    font-family: bebas-neue;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#custom_link {
+    background-color: var(--dialogBackground);
+    padding: .5rem;
+    margin: 2rem;
+    border: 1px solid var(--white);
+    margin: 0;
+    border-right: none;
+    color: var(--white);
+    font-family: lilita-one;
+    font-size: 1.2rem;
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+    width: fit-content;
+}
+
+#copy_icon {
+    max-width: 2rem;
+    border: 1px solid var(--white); 
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    background-color: var(--dialogBackground);
+}
+
+#copy_icon:hover {
+    scale: 1.2;
+    cursor: pointer;
+
+}
+
+#copy_notification {
+    margin-top: 1rem;
+    border: 1px solid var(--white);
+    border-radius: .5rem;
+    padding: .5rem;
+    animation: fade-in-out 1.5s forwards;
+}
+
+/* On screen keyboard */
+#keyboard_container {
+    color: var(--white);
+    margin-top: 2rem;
+    max-width: 100vw;
+}
+
+#kb_row_1 {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: .5rem;
+    margin: auto;
+    max-width: 40rem;
+}
+
+#kb_row_2 {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: .5rem;
+    margin: .5rem auto;
+    max-width: 35rem;
+}
+
+#kb_row_3 {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.5fr;
+    gap: .5rem;
+    margin: auto;
+    max-width: 40rem;
+}
+
+.kb_key {
+    text-align: center;
+    outline: 1px solid #000000;
+    font-size: 2rem;
+    font-family: bebas-neue;
+    color: var(--white);
+    background-color: var(--kb-key);
+    border: none;
+    border-radius: .5rem;
+    display: grid;
+    place-items: center;
+    height: 4rem;
+}
+
+.kb_key:hover {
+    cursor: pointer;
+    outline: 2px solid var(--white);
+}
+
+#delete_key, #enter_key {
+ max-width: 6rem;
+ font-size: 1.5rem;
+}
+
+#backspace_icon, #enter_icon {width: 1.5rem;}
+
+#link_img {
+    bottom: 0px;
+    left: 0px;
+    height: 15rem;
+    position: fixed;
+    z-index: -1;
+}
+
+#mario_img {
+    bottom: 0px;
+    right: 1rem;
+    height: 16rem;
+    position: fixed;
+    z-index: -1;
+}
+
+@media (max-width: 700px)  {
+    h1 {font-size: 2rem;}
+
+    #pikachu_img, #luigi_img {display: none;}
+    
+    #grid_container {
+        margin-top: 1rem;
+        gap: .3rem;
+        font-size: 2rem;
+    }
+
+    #scores_container, #info_container {
+        max-width: calc(90vw - 2px);
+    }
+
+    #info_container > p {font-size: 1.8rem;}
+
+    #keyboard_container {
+        margin-top: 1rem;
+        background-color: var(--dialogBackground);
+        border: 5px solid var(--dialogBackground);
+        outline: 1px solid black;
+    }
+
+    #kb_row_3 {grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.2fr;}
+
+    .kb_key {
+        height: 2.8rem;
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 950px) {
+    #grid_container {
+        gap: .5rem;
+        font-size: 2.7rem;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .title {
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    #pikachu_img {display: inline-block;}
+}
+
+@media (max-height: 1000px) and (min-width: 600px) {
+    h1 {font-size: 2.8rem;}
+
+    #pikachu_img {margin: auto auto -1.3rem 0;}
+    
+    #grid_container {
+        margin-top: 1rem;
+        gap: .5rem;
+    }
+
+    #scores_container, #info_container {max-width: calc(90vw - 2px);}
+
+    #keyboard_container {margin-top: 1rem;}
+
+    #info_container > p {font-size: 1.4rem;}
+
+    #kb_row_3 {grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.2fr;}
+
+    .kb_key {
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-height: 1100px) and (min-height: 1000px) {
+    #grid_container {
+        gap: .5rem;
+        margin-top: 1rem;
+    }
+
+    #kb_row_3 {grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.2fr;}
+
+    .kb_key {
+        font-size: 1.5rem;
+        height: 3rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #link_img, #mario_img {display: none;}
+}
+
+@media (max-width: 880px) {
+    #luigi_img {display: none;}
+}
+
+@media (max-height: 700px) and (min-width: 950px){
+    #mario_img {display: none;}
+} 
+
+@media (min-width: 1600px) {
+    #link_img {left: 17rem}
+    #mario_img {right: 17rem}
+}
+
+@media (max-height: 800px) {#grid_container {font-size: 2rem;}}
+
+/* Keyframes */
+@keyframes color-change-green {100% {background-color: var(--green);}}
+
+@keyframes color-change-yellow {100% {background-color: var(--yellow);}}
+
+@keyframes color-change-grey {100% {background-color: var(--grey);}}
+
+@keyframes color-change-dark-grey {100% {background-color: var(--dark-grey);}}
+
+@keyframes fade-in-out {
+    0% {opacity: 0;}
+    20% {opacity: 100;}
+    92% {opacity: 100;}
+    100% {opacity: 0;}
+}
+
+@keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 100;}
+}
