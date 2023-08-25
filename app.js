@@ -139,7 +139,7 @@ $(document).ready(function() {
     $('#info_button').on('click', show_info);
     $('#hide_info').on('click', hide_info);
     $('#play_again').on('click', () => {
-        window.history(replaceState({}, document.title, url[0])); //Removes query param from url before reload
+        window.history.replaceState({}, document.title, url[0]); //Removes query param from url before reload
         location.reload(true);
     });
     $copy_icon.on('click', () => {
