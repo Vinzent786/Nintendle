@@ -366,7 +366,6 @@ a {color: var(--blue);}
 }
 
 #copy_notification {
-    margin-top: 1rem;
     border: 1px solid var(--white);
     border-radius: .5rem;
     padding: .5rem;

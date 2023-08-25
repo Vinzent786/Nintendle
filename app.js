@@ -44,7 +44,9 @@ function genAnswer() {
         const keys = Object.keys(answers_obj);
         const random_key = keys[Math.floor(Math.random() * keys.length)]; //Random object key
         answer = answers_obj[random_key][Math.floor(Math.random() * answers_obj[random_key].length)]; //Answer is a random index from an array that is the value of the random key
-        $('#answer_franchise').on('click', showFranchise(random_key));
+        $('#answer_franchise').on('click', () => {
+            showFranchise(random_key); //Calling the showFranchise this way stops the function from auto running
+        });
         genLink(random_key, answer);
     } else if (url.length === 2) {//If site was loaded from a shared answer link, length of array will be 2
         try {
@@ -53,7 +55,9 @@ function genAnswer() {
             const queryParams = decodedB64answer.split(','); //Splits query into object key (answer franchise) and answer
             const key = queryParams[0]; //Answer franchise
             answer = queryParams[1]; //Answer
-            $('#answer_franchise').on('click', showFranchise(key));
+            $('#answer_franchise').on('click', () => {
+                showFranchise(key); //Calling the showFranchise this way stops the function from auto running
+            });
             genLink(key, answer);
         } catch (err) {
             c(err);
