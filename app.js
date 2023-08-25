@@ -1,5 +1,9 @@
 let c = (x) => {return console.log(x)}
 
+c(navigator.platform);
+c(navigator.userAgent);
+c(navigator.appVersion);
+
 let answer;
 function genAnswer() {
     const url = window.location.href.split('?'); //Splits url by query, if there is one
