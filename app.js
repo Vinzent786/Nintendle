@@ -1,8 +1,6 @@
 let c = (x) => {return console.log(x)}
 
-c(navigator.platform);
-c(navigator.userAgent);
-c(navigator.appVersion);
+c(`Hi Jay!\n\nPlatform - ${navigator.platform}\nBrowser details - ${navigator.userAgent}`);
 
 let answer;
 function genAnswer() {
