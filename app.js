@@ -1,5 +1,4 @@
-const c = (x) => {return console.log(x)}
-
+const c = (x) => {return console.log(x)} //For more convenient testing 
 let answer;
 const url = window.location.href.split('?'); //Splits url by query, if there is one
 
@@ -8,7 +7,7 @@ const showFranchise = (key) => {
     $('#answer_franchise').text('');
     $('#answer_franchise').append(`<u>${key}</u>`);
     //Changes ID since this element shouldn't be clicked again
-    $('#answer_franchise').attr('id', 'answer_franchise_no_hover')
+    $('#answer_franchise').attr('id', 'answer_franchise_no_hover');
     $('#answer_franchise').removeAttr('id');
 }
 
@@ -18,7 +17,7 @@ const genLink = (key, answer) => {
     const b64Answer = btoa(`${key},${answer}`) //Encoded answer in B64
     const URIanswer = encodeURIComponent(b64Answer); //Encoded B64 for URL
     let url = `${baseURL}?a=${URIanswer}`; //Sets answer as query param
-    $('#custom_link').text(url)
+    $('#custom_link').text(url);
 }
 
 function genAnswer() {
@@ -166,8 +165,7 @@ $(document).ready(function() {
         $('#custom_link').select(); //Selects custom link 
         navigator.clipboard.writeText($('#custom_link').text()); //Writes custom link to clipboard
         $('#copy_notification').attr('open', '');
-        setTimeout(() => $('#copy_notification').removeAttr('open'), 2000)
-        
+        setTimeout(() => $('#copy_notification').removeAttr('open'), 2000);     
     });
     window.addEventListener('resize', drawGrid); //Redraws the grid when window is resized
 });
