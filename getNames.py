@@ -3,20 +3,21 @@ from bs4 import BeautifulSoup
 import re
 
 def main():
-    r = requests.get('https://nintendo.fandom.com/wiki/Category:F-Zero_pilots')
+    r = requests.get('https://nintendo.fandom.com/wiki/Category:Kirby_characters')
     soup = BeautifulSoup(r.content, 'html.parser')
     a_elements = soup.find_all('a', class_='category-page__member-link')
     characters = []
     characters_p = []
-    illegal_chars = r'[^a-z]+'
+    illegal_chars = r'[^a-z ]+'
 
     def genLists():
         for i in a_elements:
-            if '(' in i.text:
-                characters_p.append(i.text.upper())
-            if len(i.text) >=4 and len(i.text) <= 10:
-                if not re.search(illegal_chars, i.text, re.IGNORECASE):
-                    characters.append(i.text.upper())
+            str = i.text.replace(' ', '')
+            if '(' in str:
+                characters_p.append(str.upper())
+            if len(str) >=4 and len(str) <= 10:
+                if not re.search(illegal_chars, str, re.IGNORECASE):
+                    characters.append(str.upper())
     genLists()
     
     characters = set(characters)
@@ -26,12 +27,12 @@ def main():
 #main()
 
 def noDupes():
-    smash_bros_arr1 = ['Bayonetta', 'Bowser', 'Byleth', 'falcon', 'Charizard', 'chrom', 'cloud', 'corrin', 'daisy', 'samus', 'mario', 'falco', 'Ganondorf', 'Greninja', 'hero', 'Incineroar', 'Inkling', 'Isabelle', 'Ivysaur', 'Jigglypuff', 'Joker', 'Kazuya', 'Kirby', 'link', 'Lucario', 'Lucas', 'Lucina', 'Luigi', 'Marth', 'Mewtwo', 'Mythra', 'ness', 'Olimar', 'Palutena', 'Peach', 'Pichu', 'Pikachu', 'Pyra', 'Richter', 'Ridley', 'Robin', 'Rosalina', 'Sephiroth', 'sheik', 'Shulk', 'Simon', 'Snake', 'Sonic', 'Sora', 'Squirtle', 'Steve', 'Terry', 'Villager', 'Wario', 'Wolf', 'Yoshi', 'zelda']
+    arr1 = ['DRAWCIA', 'ZEROTWO', 'KIRBY', 'FLAMER', 'WADDLEDEE', 'SPINNI', 'BUGZZY', 'JUKID', 'RIBBON', 'ELLINE', 'MARA', 'MAIMAIGOON', 'NAGO', 'GOOEY', 'PITCH', 'STORO', 'BEADRIX', 'KNUCKLEJOE', 'GORIMONDO', 'LANDIA', 'LOLA', 'MASTERHAND', 'KINE', 'METAKNIGHT', 'CHILLY', 'ESCARGOON', 'MARX', 'ROCKY', 'SIMIRROR', 'HOTHEAD', 'RICK', 'KABU', 'ICEDRAGON', 'TUFF', 'WADDLEDOO', 'BUTTERFLY', 'LEONGAR', 'GRIZZO', 'SILLYDILLO', 'CAPTAINVUL', 'GREENKIRBY', 'DOMWOOLE', 'ELFILIN', 'DAROACH', 'KINGDEDEDE', 'ADELEINE', 'BOMBAR', 'CLAWROLINE', 'DARKMIND', 'DYNABLADE', 'FECTOFORGO', 'MAGMAN', 'MAGOLOR', 'SQUASHINI', 'BONKERS', 'TARANZA', 'BLOCKY', 'SQUISHY', 'TIFF', 'MOONJA', 'BOXBOXER', 'AXKNIGHT', 'KRACKO', 'PHANPHAN', 'IRONMOM', 'MARXSOUL', 'STARDREAM', 'NECRODEUS', 'KEEBY', 'BRONTOBURT', 'HYNESS', 'SAILORDEE', 'LADYLIKE', 'MACEKNIGHT', 'NAGO', 'CHILLY', 'MOONJA', 'ADELEINE', 'SIMIRROR', 'LANDIA', 'JUKID', 'LOLA', 'KEEBY', 'BEADRIX', 'SILLYDILLO', 'KINE', 'TIFF', 'TUFF', 'MARX', 'ACRO', 'DRAWCIA', 'BLOCKY', 'ROCKY', 'CHUCHU', 'BOMBAR', 'NECRODEUS', 'ESCARGOON', 'ELFILIN', 'SPINNI', 'SQUISHY', 'CLAWROLINE', 'RIBBON', 'SQUASHINI', 'GORIMONDO', 'MAIMAIGOON', 'KABU', 'BUTTERFLY', 'BONKERS', 'TARANZA', 'FLAMER', 'MARA', 'GRIZZO', 'RICK', 'POPOPO', 'NIGHTMARE', 'ZERO', 'HYNESS', 'MAGOLOR', 'MAGMAN', 'LEONGAR', 'BUGZZY', 'STORO', 'GOOEY', 'PITCH', 'DAROACH', 'ELLINE', 'KRACKO', 'KIRBY']
     
-    smash_bros_arr = [i.upper().strip() for i in smash_bros_arr1]
+    arr2 = [i.upper().strip() for i in arr1]
 
-    smash_bros_arr = set(smash_bros_arr)
+    arr2 = set(arr2)
 
-    print(f'smash_bros_arr = {list(smash_bros_arr)}')
+    print(f'arr2 = {list(arr2)}')
 
 noDupes()
