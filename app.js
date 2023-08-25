@@ -15,8 +15,8 @@ const showFranchise = (key) => {
 //Generates a sharable link with the current game state's answer, and the answer's franchise
 const genLink = (key, answer) => {
     const baseURL = window.location.href.split('?')[0]; //Variable holds base url
-    let b64Answer = btoa(`${key},${answer}`) //Encoded answer in B64
-    let URIanswer = encodeURIComponent(b64Answer); //Encoded B64 for URL
+    const b64Answer = btoa(`${key},${answer}`) //Encoded answer in B64
+    const URIanswer = encodeURIComponent(b64Answer); //Encoded B64 for URL
     let url = `${baseURL}?a=${URIanswer}`; //Sets answer as query param
     $('#custom_link').text(url)
 }
