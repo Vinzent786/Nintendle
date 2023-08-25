@@ -1,6 +1,6 @@
 let c = (x) => {return console.log(x)}
 
-c(`Hi Jay!\n\nPlatform - ${navigator.platform}\nBrowser details - ${navigator.userAgent}`);
+c(`width: ${$(window).width()}px\nheight: ${$(window).height()}px`);
 
 let answer;
 function genAnswer() {
