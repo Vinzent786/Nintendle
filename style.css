@@ -475,6 +475,10 @@ a {color: var(--blue);}
         height: 2.8rem;
         font-size: 1.6rem;
     }
+
+    #custom_link {
+        font-size: .7rem;
+    }
 }
 
 @media (min-width: 700px) and (max-width: 950px) {
