@@ -240,7 +240,10 @@ function enterInput(e) {
 //Virtual keyboard keys
 let kb_keys = $('.kb_key')
 for (let i = 0; i < kb_keys.length; i++) {
-    $(kb_keys[i]).click(() => enterInput($(kb_keys[i]).data('key')))
+    $(kb_keys[i]).click(() => {
+        enterInput($(kb_keys[i]).data('key'));
+        $(kb_keys[i]).blur();
+    })
 }
 
 function get_scores (win, guess) {
