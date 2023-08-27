@@ -445,6 +445,16 @@ a {color: var(--blue);}
     z-index: -1;
 }
 
+.shake {animation: shake 1s forwards;}
+
+#not_in_list {
+    border: 1px solid var(--white);
+    border-radius: 1rem;
+    font-family: bebas-neue;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
 @media (max-width: 700px)  {
     h1 {font-size: 2rem;}
 
@@ -573,4 +583,10 @@ a {color: var(--blue);}
 @keyframes fade-in {
     0% {opacity: 0;}
     100% {opacity: 100;}
+}
+
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-3px);}
+    20%, 40%, 60%, 80% {transform: translateX(3px);}
 }
