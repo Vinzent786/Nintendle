@@ -209,7 +209,7 @@ function enterInput(e) {
                         $(div).removeClass('shake');
                     });
                 }, 1000);
-                setTimeout(() => $('#not_in_list').removeAttr('open'), 3000);
+                setTimeout(() => $('#not_in_list').removeAttr('open'), 1700);
             } else if (in_array === true) {
                 finishedDivs.forEach(div => {
                     $(div).attr('finished', true); //Sets finished attribute to true for divs in finished array
