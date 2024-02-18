@@ -380,6 +380,12 @@ function finish(guess) {
             case 6:
                 finishDialog('Got it!', win);
                 break;
+            case 7:
+                finishDialog('phew!', win);
+                break;
+            case 8:
+                finishDialog('Barely!', win);
+                break;
             default:
                 break;
         }
