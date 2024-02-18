@@ -357,23 +357,30 @@ function finish(guess) {
     let win;
     //If game won
     if (guess !== undefined) {
-        win = true;
-        if (guess === 1) { //First guess
-            finishDialog('Flawless!', win);
-        } else if (guess === rows) { //Last guess
-            finishDialog('That was close!', win);
-        } else if (guess === 2) {
-            finishDialog('Amazing!', win);
-        } else if (guess === 3) {
-            finishDialog('Fantastic!', win);
-        } else if (guess === 4) {
-            finishDialog('Great!', win);
-        } else if (guess === 5) {
-            finishDialog('Good job!', win);
-        } else if (guess === 5) {
-            finishDialog('Well done!', win);
-        } else if (guess === 6) {
-            finishDialog('Got it!', win);
+        switch(guess) {
+            case 1: //First guess
+                finishDialog('Flawless!', win);
+                break;
+            case rows: //Last guess
+                finishDialog('That was close!', win);
+                break;
+            case 2:
+                finishDialog('Amazing!', win);
+                break;
+            case 3:
+                finishDialog('Fantastic!', win);
+                break;
+            case 4:
+                finishDialog('Great!', win);
+                break;
+            case 5:
+                finishDialog('Good job!', win);
+                break;
+            case 6:
+                finishDialog('Got it!', win);
+                break;
+            default:
+                break;
         }
         //Delays auto showing scores
         setTimeout(function() {
