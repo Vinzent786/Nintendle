@@ -30,30 +30,32 @@ export default function Nav() {
         setTimeout(() => {
             grid.style.border = '2px solid #ffffff';
             grid.style.padding = '15px';
-            html2canvas(grid, {
-                backgroundColor: '#0d181f', 
-                border: '2px solid white',
-                scale: window.devicePixelRatio
-            })
-            .then(originalCanvas => {
-                const canvas = document.createElement('canvas');
-                canvas.width = originalCanvas.width;
-                canvas.height = originalCanvas.height;
+            setTimeout(() => {
+                html2canvas(grid, {
+                    backgroundColor: '#0d181f', 
+                    border: '2px solid white',
+                    scale: window.devicePixelRatio
+                })
+                .then(originalCanvas => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = originalCanvas.width;
+                    canvas.height = originalCanvas.height;
+        
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = 'transparent';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(originalCanvas, 0, 0);
+                    
+                    screenShotContainer.innerHTML = '';
+                    screenShotContainer.appendChild(canvas);
+                    dialog.showModal();
     
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = 'transparent';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(originalCanvas, 0, 0);
-                
-                screenShotContainer.innerHTML = '';
-                screenShotContainer.appendChild(canvas);
-                dialog.showModal();
-
-                grid.removeChild(waterMark);
-                grid.style.padding = '0px';
-                grid.style.border = 'none';
-            });
-        }, 1000);
+                    grid.removeChild(waterMark);
+                    grid.style.padding = '0px';
+                    grid.style.border = 'none';
+                });
+            }, 1000);
+        }, 500);
     }
 
     const handleCloseScreenShot = () => {
