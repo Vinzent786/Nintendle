@@ -245,7 +245,7 @@ export default function Game() {
             </main>
             <div id="show-options" onClick={handleGameOptionsClicked}>
                 <p>GAME OPTIONS</p>
-                <button><img src="/Nintendle/assets/icons/down-arrow-white.svg" alt="Down Arrow" /></button>
+                <button><img src="/assets/icons/down-arrow-white.svg" alt="Down Arrow" /></button>
             </div>
         </div>
         <dialog id="beedle-dialog">
@@ -259,9 +259,9 @@ export default function Game() {
                 <script async src="//s.imgur.com/min/embed.js" charSet="utf-8"></script>
             </div>
         </dialog>
-        <img className="game-img" id="luigi-img" src="/Nintendle/assets/images/luigi.webp" alt="" />
-        <img className="game-img" id="mario-img" src="/Nintendle/assets/images/mario.webp" alt="" />
-        <img className="game-img" id="link-img" src="/Nintendle/assets/images/link.webp" alt="" />
+        <img className="game-img" id="luigi-img" src="/assets/images/luigi.webp" alt="" />
+        <img className="game-img" id="mario-img" src="/assets/images/mario.webp" alt="" />
+        <img className="game-img" id="link-img" src="/assets/images/link.webp" alt="" />
         {gameOptionsClicked && <GameOptions setGameOptionsClicked={setGameOptionsClicked} />}
         </>
     )

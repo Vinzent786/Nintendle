@@ -75,7 +75,7 @@ export default function Nav() {
         const checkMark = document.createElement('div');
         checkMark.id = 'check-mark';
         const img = document.createElement('img');
-        img.src = '/Nintendle/assets/icons/check-mark-icon.svg';
+        img.src = '/assets/icons/check-mark-icon.svg';
         img.alt = 'Check Mark Icon';
         checkMark.appendChild(img);
         dialog.appendChild(checkMark);
@@ -117,7 +117,7 @@ export default function Nav() {
     return (
         <>
         <nav id="nav">
-        <img id="pikachu-img" src="/Nintendle/assets/images/pikachu.webp" alt="Pikachu" />
+        <img id="pikachu-img" src="/assets/images/pikachu.webp" alt="Pikachu" />
             <Link to={'/'}>
                 <h1>Nintendle</h1>
             </Link>
@@ -125,12 +125,12 @@ export default function Nav() {
                 {(
                     rootPath && 
                     <button className="nav-buttons" id="camera" onClick={handleScreenShot}>
-                    <img src="/Nintendle/assets/icons/camera-icon.svg" alt="" /></button>
+                    <img src="/assets/icons/camera-icon.svg" alt="" /></button>
                 )}
                 <Link to={'/info.jsx'}>
-                    <button className="nav-buttons" id='info-icon'><img src="/Nintendle/assets/icons/info-icon.svg" alt="info icon"/></button>
+                    <button className="nav-buttons" id='info-icon'><img src="/assets/icons/info-icon.svg" alt="info icon"/></button>
                 </Link>
-                <button className="nav-buttons" id="share-icon" onClick={handleCustomLinkClick}><img src="/Nintendle/assets/icons/share-icon.svg" alt="Share Icon" /></button>
+                <button className="nav-buttons" id="share-icon" onClick={handleCustomLinkClick}><img src="/assets/icons/share-icon.svg" alt="Share Icon" /></button>
                 <button className="nav-buttons" id='scores' onClick={handleScoresClick}>Scores</button>
             </div>
         </nav>

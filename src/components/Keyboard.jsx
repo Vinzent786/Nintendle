@@ -25,7 +25,7 @@ export default function Keyboard() {
                 <button className="kb-key kb-key-hover" data-key="L">L</button>
             </div>
             <div className="kb-row">
-                <button className="kb-key kb-key-hover" data-key="Backspace" id="delete-key"><img id="backspace-icon" src="/Nintendle/assets/icons/backspace-icon.svg" alt="backspace-icon" /></button>
+                <button className="kb-key kb-key-hover" data-key="Backspace" id="delete-key"><img id="backspace-icon" src="/assets/icons/backspace-icon.svg" alt="backspace-icon" /></button>
                 <button className="kb-key kb-key-hover" data-key="Z">Z</button>
                 <button className="kb-key kb-key-hover" data-key="X">X</button>
                 <button className="kb-key kb-key-hover" data-key="C">C</button>
@@ -33,7 +33,7 @@ export default function Keyboard() {
                 <button className="kb-key kb-key-hover" data-key="B">B</button>
                 <button className="kb-key kb-key-hover" data-key="N">N</button>
                 <button className="kb-key kb-key-hover" data-key="M">M</button>
-                <button className="kb-key kb-key-hover" data-key="Enter" id="enter-key"><img id="enter-icon" src="/Nintendle/assets/icons/enter-icon.svg" alt="enter-icon" /></button>
+                <button className="kb-key kb-key-hover" data-key="Enter" id="enter-key"><img id="enter-icon" src="/assets/icons/enter-icon.svg" alt="enter-icon" /></button>
             </div>
         </div>
     )
