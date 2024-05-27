@@ -13,7 +13,7 @@ export default function App() {
   useEffect(() => {
     const loadTimerID = setTimeout(() => setLoading(false), 850);
 
-    return () => clearTimeout(loadTimerID);
+    // return () => clearTimeout(loadTimerID);
   }, []);
 
 
