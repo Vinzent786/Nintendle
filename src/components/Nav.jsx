@@ -31,9 +31,6 @@ export default function Nav() {
             grid.style.border = '2px solid #ffffff';
             grid.style.padding = '15px';
             html2canvas(grid, {
-                // scrollY: -window.scrollY,
-                // width: grid.width,
-                // height: grid.height,
                 backgroundColor: '#0d181f', 
                 border: '2px solid white',
                 scale: window.devicePixelRatio
@@ -42,21 +39,29 @@ export default function Nav() {
                 const canvas = document.createElement('canvas');
                 canvas.width = originalCanvas.width;
                 canvas.height = originalCanvas.height;
-    
+        
                 const ctx = canvas.getContext('2d');
                 ctx.fillStyle = 'transparent';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(originalCanvas, 0, 0, canvas.width, canvas.height);
-                
+        
+                // Dynamically adjust canvas size to fit within the dialog
+                const dialogWidth = screenShotContainer.clientWidth;
+                const dialogHeight = screenShotContainer.clientHeight;
+                const scaleFactor = Math.min(dialogWidth / canvas.width, dialogHeight / canvas.height, 1);
+        
+                canvas.style.width = `${canvas.width * scaleFactor}px`;
+                canvas.style.height = `${canvas.height * scaleFactor}px`;
+        
                 screenShotContainer.innerHTML = '';
                 screenShotContainer.appendChild(canvas);
                 dialog.showModal();
-
+        
                 grid.removeChild(waterMark);
                 grid.style.padding = '0px';
                 grid.style.border = 'none';
             });
-        }, 100);
+        }, 500);
     }
 
     const handleCloseScreenShot = () => {

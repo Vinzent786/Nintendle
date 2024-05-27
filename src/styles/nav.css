@@ -124,9 +124,10 @@ h1:hover {
     border-radius: 8px;
     position: relative;
     padding: 10px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    /* width: 600px; */
+    overflow: auto; /* Allow scrolling if content overflows */
+    width: 80vw; /* Use a percentage of viewport width for better responsiveness */
+    max-width: 600px;
+    max-height: 80vh; /* Limit height to a percentage of viewport height */
 }
 
 #screen-shot-dialog::backdrop {
@@ -135,8 +136,8 @@ h1:hover {
 }
 
 canvas {
-    /* max-width: 70%;
-    max-height: 70%; */
+    width: 100%; /* Ensure the canvas scales with the container */
+    height: auto; /* Maintain aspect ratio */
 }
 
 #screen-shot-dialog button {
@@ -215,10 +216,11 @@ canvas {
         border-right: 0;
         border-left: 0;
         padding: inherit 15px;
+        max-height: 100vh; /* Ensure dialog can use full viewport height on small screens */
     }
     canvas {
-        /* max-width: 90%;
-        max-height: 90%; */
+        width: 90%;
+        height: auto;
     }
     #check-mark {
         right: 10%;
