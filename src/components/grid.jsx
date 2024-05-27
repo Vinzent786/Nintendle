@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import Keyboard from "./keyboard.jsx";
+import Keyboard from "./Keyboard.jsx";
 import { gameFunctions } from "../helpers/game-functions.js";
 import { useGridContext } from "../helpers/grid-context.jsx";
 

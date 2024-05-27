@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import Nav from './nav.jsx';
-import Grid from './grid.jsx';
-import GameOptions from "./gameOptions.jsx";
+import Nav from './Nav.jsx';
+import Grid from './Grid.jsx';
+import GameOptions from "./GameOptions.jsx";
 import '../styles/game.css'
 import { useOptionsContext } from "../helpers/options-context.jsx";
 import { answersObj, checkInAnswers } from "../helpers/answers.js";

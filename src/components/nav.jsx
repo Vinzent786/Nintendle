@@ -1,8 +1,8 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import Scores from "./scores";
+import Scores from "./Scores";
 import '../styles/nav.css';
-import CustomLink from "./customLink";
+import CustomLink from "./CustomLink";
 
 
 export default function Nav() {
