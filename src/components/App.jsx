@@ -21,23 +21,24 @@ export default function App() {
     <>
     {
       (loading) ?     
-      <div id="loading-container">
-        <p>Loading...</p>
-        <div id="loading-gif"></div>
-      </div>
+      // <div id="loading-container">
+      //   <p>Loading...</p>
+      //   <div id="loading-gif"></div>
+      // </div>
+      <Game />
       :
       <BrowserRouter>
-      <OptionsProvider>
-        <AnswerProvider>
-          <GridProvider>
-            <Routes>
-              <Route path='/' element = {<Game />} />
-              <Route path='/info.jsx' element = {<Info />} />
-            </Routes>
-          </GridProvider>
-        </AnswerProvider>
-      </OptionsProvider>
-    </BrowserRouter>
+        <OptionsProvider>
+          <AnswerProvider>
+            <GridProvider>
+              <Routes>
+                <Route path='/' element = {<Game />} />
+                <Route path='/info.jsx' element = {<Info />} />
+              </Routes>
+            </GridProvider>
+          </AnswerProvider>
+        </OptionsProvider>
+      </BrowserRouter>
     }
     </>
   );
