@@ -30,7 +30,17 @@ export default function Nav() {
             const screenShotContainer = document.getElementById('screen-shot-container');
             if (!dialog || !screenShotContainer) throw new Error('Dialog or screenshot container element not found');
     
+            // Ensure the grid element is fully visible
+            grid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
             await new Promise(resolve => setTimeout(resolve, 500));
+    
+            // Temporarily set explicit dimensions to ensure full visibility
+            const gridRect = grid.getBoundingClientRect();
+            const originalWidth = grid.style.width;
+            const originalHeight = grid.style.height;
+            grid.style.width = `${gridRect.width}px`;
+            grid.style.height = `${gridRect.height}px`;
     
             grid.style.border = '2px solid #ffffff';
             grid.style.padding = '15px';
@@ -58,6 +68,9 @@ export default function Nav() {
             screenShotContainer.appendChild(canvas);
             dialog.showModal();
     
+            // Restore original dimensions
+            grid.style.width = originalWidth;
+            grid.style.height = originalHeight;
             grid.removeChild(waterMark);
             grid.style.padding = '0px';
             grid.style.border = 'none';
@@ -65,6 +78,7 @@ export default function Nav() {
             console.error('Error during screenshot handling:', error);
         }
     };
+    
     
     
 
