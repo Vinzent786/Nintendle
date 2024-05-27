@@ -1,8 +1,8 @@
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../styles/App.css';
-import Game from '/src/components/Game.jsx';
-import Info from '/src/components/Info.jsx';
+import Game from './components/Game.jsx';
+import Info from './components/Info.jsx';
 import { OptionsProvider } from '../helpers/options-context.jsx';
 import { AnswerProvider } from '../helpers/answer-context.jsx';
 import { GridProvider } from '../helpers/grid-context.jsx';
