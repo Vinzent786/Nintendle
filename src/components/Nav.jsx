@@ -11,7 +11,7 @@ export default function Nav() {
     const handleNavHeight = (height) => setNavHeight(height);
     const [scoresClicked, setScoresClicked] = useState(false);
     const [customLinkClicked, setCustomLinkClicked] = useState(false);
-    const rootPath = window.location.hash === '#/' || false;
+    const rootPath = (window.location.hash === '#/' || window.location.hash === '') ? true : false;
     const [scDialog, setScDialog] = useState(false);
 
     const handleScreenShot = () => {
