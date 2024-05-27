@@ -34,7 +34,7 @@ export default function Info() {
             
             const img = document.createElement('img');
             img.id = 'ravioli-img';
-            img.src = '/assets/images/ravioli.jpg';
+            img.src = '/Nintendle/assets/images/ravioli.jpg';
             ravioliContainer.appendChild(img);
 
             const source = document.createElement('a');
@@ -61,7 +61,7 @@ export default function Info() {
         <div id="nav-wrapper">
             <Nav />
         </div>
-        <img id='donkey-kong-img' src="/assets/images/donkey-kong.webp" alt="" />
+        <img id='donkey-kong-img' src="/Nintendle/assets/images/donkey-kong.webp" alt="" />
         <main id='main-info'>
             <h2 id='h2-info'>About</h2>
             <p id="about-p">
@@ -79,11 +79,11 @@ export default function Info() {
                 <span>(Click "Nintendle" in nav bar  to return to game)</span>
             </p>
             <a href="https://discord.com/invite/NxFuHfvWW7" target='_blank'>
-                <img src="/assets/icons/discord-icon.svg" alt="Discord Icon" id='discord-icon' />
+                <img src="/Nintendle/assets/icons/discord-icon.svg" alt="Discord Icon" id='discord-icon' />
             </a>
         </main>
-        <img id='purple-inkling-img' src="/assets/images/purple-inkling.webp" alt="" />
-        <img id='green-inkling-img' src="/assets/images/green-inkling.webp" alt="" />
+        <img id='purple-inkling-img' src="/Nintendle/assets/images/purple-inkling.webp" alt="" />
+        <img id='green-inkling-img' src="/Nintendle/assets/images/green-inkling.webp" alt="" />
         </>
     )
 }

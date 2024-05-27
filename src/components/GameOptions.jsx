@@ -114,7 +114,7 @@ export default function GameOptions({ setGameOptionsClicked }) {
     return (
         <>
         <dialog id="game-options" className="hidden">
-            <button id="close-game-options" onClick={handleGameOptionsClicked}><img src="/assets/icons/down-arrow-white.svg" alt="Down Arrow" /></button>
+            <button id="close-game-options" onClick={handleGameOptionsClicked}><img src="/Nintendle/assets/icons/down-arrow-white.svg" alt="Down Arrow" /></button>
             <section id="options-section">
                 <h2 id="choose-franchise">Choose the Franchise</h2>
                 <div id="options">

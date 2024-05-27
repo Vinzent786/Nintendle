@@ -98,15 +98,15 @@ export default function CustomLink({setCustomLinkClicked}) {
             <div id="link-container">
                 <p>Share game link that has this game's answer</p>
                 <div id="custom-link-container">
-                    <button onClick={copyLink}><img src='/assets/icons/copy-icon.svg' alt="Copy Icon" /></button>
+                    <button onClick={copyLink}><img src='/Nintendle/assets/icons/copy-icon.svg' alt="Copy Icon" /></button>
                     <dialog id="copied">Link Copied!</dialog>
                     <p id="custom-link"></p>
                 </div>
                 {/* Make share to discord and twitter */}
             </div>
             <div id="share-container">
-                <img src="/assets/icons/twitter-icon.svg" alt="Twitter / X Logo" id="twitter-icon" className="social-media-icon" onClick={handleShare}/>
-                <img src="/assets/icons/facebook-icon.svg" alt="Facebook Logo" id="facebook-icon" className="social-media-icon" onClick={handleShare}/>
+                <img src="/Nintendle/assets/icons/twitter-icon.svg" alt="Twitter / X Logo" id="twitter-icon" className="social-media-icon" onClick={handleShare}/>
+                <img src="/Nintendle/assets/icons/facebook-icon.svg" alt="Facebook Logo" id="facebook-icon" className="social-media-icon" onClick={handleShare}/>
             </div>
         </dialog>
         </>
