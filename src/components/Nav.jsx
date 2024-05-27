@@ -55,7 +55,7 @@ export default function Nav() {
                 grid.style.padding = '0px';
                 grid.style.border = 'none';
             });
-        }, 500);
+        }, 1000);
     }
 
     const handleCloseScreenShot = () => {
