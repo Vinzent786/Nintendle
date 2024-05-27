@@ -33,14 +33,15 @@
 html {
     background: var(--main-background) no-repeat fixed;
     background-size: cover;
+    background-color: #070f13;
     height: 100vh;
 }
 
-/* @supports (height: 100dvh) {
+@supports (height: 100svh) {
     html {
-        height: 100dvh;
+        height: 100svh;
     }
-} */
+}
 
 html * {
     box-sizing: border-box;
