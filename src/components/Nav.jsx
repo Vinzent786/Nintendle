@@ -17,6 +17,8 @@ export default function Nav() {
     const handleScreenShot = () => {
         setScDialog(true);
 
+        document.getElementById('content-wrapper').style.transform = 'translateX(0%)';
+
         const waterMark = document.createElement('span');
         waterMark.id = 'watermark';
         waterMark.innerText = 'Nintendle.io';
