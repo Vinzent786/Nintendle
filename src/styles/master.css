@@ -36,9 +36,9 @@ html {
     height: 100vh;
 }
 
-@supports (height: 100svh) {
+@supports (height: 100dvh) {
     html {
-        height: 100svh;
+        height: 100dvh;
     }
 }
 
