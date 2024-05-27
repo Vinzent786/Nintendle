@@ -1,0 +1,441 @@
+html {
+    --char-green: #90EE90;
+    --char-orange: #FDB44E;
+    --char-grey: #D3D3D3;
+    --dark-grey: #4d4d4d;
+    --char-text-color: #ffffff;
+    --kb-key: #949494;
+}
+
+#content-wrapper {
+    display: grid;
+    user-select: none;
+    transform: translateX(-100%);
+    animation: slide-in-left  400ms forwards;
+}
+
+#main-game {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+#show-franchise {
+    font-size: 1.5rem;
+    font-family: var(--anton);
+    width: fit-content;
+    margin: 24px auto 0;
+    transition: text-decoration-color 200ms, text-underline-offset 200ms;
+}
+
+.show-franchise-hover{
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 1px;
+}
+
+.show-franchise-hover:hover {
+    text-decoration-color: var(--text-color);
+    text-underline-offset: 6px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    #show-franchise {
+        font-size: 20px;
+    }
+}
+
+/* Grid */
+
+#grid-container {
+    width: 100%;
+    height: fit-content;
+}
+
+#grid-el {
+    color: var(--text-color);
+    display: grid;
+    /* grid-template-columns is set in grid.jsx */
+    grid-template-rows: repeat(6, auto);
+    gap: 16px;
+    width: fit-content;
+    max-width: calc(100vw - 50px);
+    margin: auto;
+    position: relative;
+    justify-content: center;
+}
+
+.char-container {
+    outline: 1px solid white;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--anton);
+    color: var(--char-text-color);
+    font-size: 56px;
+    border-radius: 1px;
+    background-color: #09080f;
+}
+
+.text-scale {
+    animation: popInChar 200ms linear;
+}
+
+@media screen and (max-width: 800px) {
+    #grid-el {
+        gap: 12px;
+    }
+    .char-container {
+        font-size: 7vw;
+    }
+    .text-scale {
+        transform: scale(1.06);
+        transition: transform 250ms;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #grid-el {
+        gap: 8px;
+    }
+}
+
+/* End Grid */
+
+/* Keyboard */
+
+#kb-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+}
+
+.kb-row {
+    display: flex;
+    justify-content: center;
+}
+
+#kb-container, .kb-row {
+    gap: 6px;
+}
+
+.kb-key {
+    background-color: var(--kb-key);
+    color: #ffffff;
+    border: none;
+    font-family: var(--bebas-neue);
+    font-size: 36px;
+    width: 60px;
+    height: 65px;
+    border-radius: 9px;
+    transition: transform 200ms, background-color 350ms;
+}
+
+.kb-key-hover:hover {
+    transform: scale(1.05) translateY(2px);
+    outline: 1px solid #ffffff;
+}
+
+#delete-key, #enter-key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+}
+
+#backspace-icon, #enter-icon {
+    width: 24px;
+}
+
+@media screen and (max-width: 800px) {
+    #kb-container, .kb-row {
+        gap: 5px;
+    }
+    .kb-key {
+        font-size: 32px;
+        width: 50px;
+        height: 55px;
+        border-radius: 6px;
+    }
+    .kb-key-hover:hover {
+        transform: scale(1.04);
+        outline: 1px solid #ffffff;
+    }
+    #delete-key, #enter-key {
+        width: 80px;
+        padding: 8px 0;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .kb-key {
+        font-size: 24px;
+        width: 40px;
+        height: 45px;
+    }
+    #delete-key, #enter-key {
+        width: 65px;
+    }
+    #backspace-icon, #enter-icon {
+        width: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #kb-container, .kb-row {
+        gap: 3px;
+    }
+    .kb-key {
+        font-size: 20px;
+        width: 30px;
+        height: 45px;
+    }
+    #delete-key, #enter-key {
+        width: 50px;
+    }
+    #backspace-icon, #enter-icon {
+        width: 20px;
+    }
+}
+
+/* End Keyboard */
+
+#play-again-container {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+}
+
+#play-again {
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: var(--text-color);
+    font-family: var(--bebas-neue);
+    font-size: 2rem;
+    transition: transform 200ms, box-shadow 200ms;
+}
+
+#play-again:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    #play-again-container {
+        height: fit-content;
+        margin-bottom: 10%;
+    }
+    #play-again {
+        padding: 0;
+    }
+}
+
+/* Options */
+
+#show-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    width: fit-content;
+    margin: auto;
+}
+
+#show-options:hover, #show-options:hover * {
+    cursor: pointer;
+}
+
+#show-options > p {
+    font-size: 24px;
+    font-family: var(--righteous);
+    margin: 0;
+    transition: color 300ms;
+}
+
+#show-options:hover > p {
+    text-decoration-color: var(--text-color);
+    text-underline-offset: 6px;
+    color: var(--light-blue);
+}
+
+#show-options button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    height: 32px;
+}
+
+#show-options button > img {
+    width: 2.5rem;
+    aspect-ratio: 1.3 / 1;
+    transition: transform 300ms, filter 300ms;
+}
+
+#show-options:hover img {
+    filter: invert(51%) sepia(19%) saturate(1154%) hue-rotate(149deg) brightness(99%) contrast(87%);
+    transform: scale(1.2);
+}
+
+
+/* End Options */
+
+.shake {
+    animation: shake 350ms forwards;
+}
+
+.green {
+    background-color: var(--char-green);
+    transition: background-color 650ms;
+}
+
+.orange {
+    background-color: var(--char-orange);
+    transition: background-color 650ms;
+}
+
+.grey {
+    background-color: var(--char-grey);
+    transition: background-color 650ms;
+}
+
+.dark-grey {
+    background-color: var(--dark-grey);
+    transition: background-color 650ms;
+}
+
+/* Dialogs */
+
+#finish-dialog {
+    background-color: var(--dialog-background);
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#finish-dialog::backdrop {
+    visibility: hidden;
+}
+
+#finish-dialog > p {
+    margin: 8px;
+    color: var(--text-color);
+    font-family: var(--anton);
+    font-size: 2rem;
+}
+
+#invalid-name-dialog:focus {
+    outline: none;
+}
+
+#invalid-name-dialog {
+    background-color: var(--dialog-background);
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+}
+
+#invalid-name-dialog::backdrop {
+    visibility: hidden;
+}
+
+#invalid-name-dialog > p {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-family: var(--anton);
+    margin: 8px;
+}
+
+/* End Dialogs */
+
+.invalid-name-shake {
+    animation: invalidNameShake 350ms forwards alternate;
+}
+
+/* Background Images */
+
+.game-img {
+    position: fixed;
+    height: 20%;
+    z-index: -1;
+}
+
+#luigi-img {
+    /* top is set dynamically in nav.jsx */
+    right: -50%;
+    animation: img-slide-left 600ms forwards;
+}
+
+#mario-img {
+    bottom: -50%;
+    right: 3%;
+    animation: img-slide-up 600ms forwards;
+}
+
+#link-img {
+    bottom: -50%;
+    left: 3%;
+    animation: img-slide-up 600ms forwards;
+}
+
+@media screen and (max-width: 800px) {
+    #luigi-img {
+        display: none;
+    }
+    .game-img {
+        height: 13%;
+    }
+}
+
+/* End Background Images */
+
+#beedle-dialog {
+    border: 2px solid #ffffff;
+    background-color: var(--dialog-background);
+}
+
+#beedle-dialog * {
+    user-select: none;
+}
+
+#beedle-dialog::backdrop {
+    transition: background-color 5s;
+    animation: fadeInBackdrop 250ms forwards;
+}
+
+#close-beedle-container {
+    display: flex;
+    justify-content: right;
+}
+
+#close-beedle {
+    color: var(--text-color);
+    font-family: var(--righteous);
+    font-size: 28px;
+    width: fit-content;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: none;
+    transition: background-color 100ms;
+}
+
+#close-beedle:hover {
+    outline: 1px solid white;
+    background-color: var(--red);
+    cursor: pointer;
+}
+
+.beedle-slide-in {
+    animation: slide-in-left 500ms forwards;
+}
+
+.beedle-slide-out {
+    animation: slide-out-right 500ms forwards;
+}

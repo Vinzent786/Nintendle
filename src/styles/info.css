@@ -1,0 +1,217 @@
+#main-info {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto 0;
+    width: 1150px;
+    max-width: 90vw;
+    gap: 45px;
+    right: 100%;
+    animation: main-info-slide 300ms forwards;
+}
+
+@keyframes main-info-slide {
+    0% {transform: translateX(-100%);}
+    100% {transform: translateX(0%);}
+}
+
+#h2-info {
+    font-family: var(--lilita-one);
+    font-size: 3rem;
+    border-bottom: 2px solid var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+#about-p {
+    width: 65%;
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: var(--righteous);
+}
+
+#about-p > a {
+    color: var(--light-blue);
+    text-underline-offset: 2px;
+    transition: color 250ms, text-underline-offset 200ms;
+}
+
+#about-p > a:hover {
+    color: var(--dark-blue);
+    text-underline-offset: 4px;
+}
+
+#about-p > span {
+    display: block;
+    text-align: center;
+}
+
+#discord-icon {
+    width: 80px;
+    aspect-ratio: 1 / 1.1;
+    transform-origin: center bottom;
+    margin-bottom: 20px;
+}
+
+#discord-icon:hover {
+    animation: iconShake 250ms;
+}
+
+@media screen and (min-width: 600px) {
+    #about-p > abbr {
+        transition: color 300ms;
+    }
+    
+    #about-p > abbr:hover {
+        cursor: help;
+        color: var(--light-blue);
+    }
+    #about-p > abbr:first-of-type {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #h2-info {
+        font-size: 2.5rem;
+    }
+    #about-p {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #main-info  {
+        margin: 25px auto 0;
+        gap: 25px;
+    }
+    #about-p {
+        font-size: 1.2rem;
+        width: 100%;
+    }
+    #about-p > abbr {
+        display: block;
+        text-decoration: none;
+    }
+    #about-p > abbr:first-of-type:after {
+        content: ": On Game Page - Pester Link and he will take it out on his favorite merchant...";
+    }
+
+    #about-p > abbr:nth-of-type(2):after {
+        content: ': On This Page (not on mobile) - Revali, but if he were Italian...';
+    }
+}
+
+/* Background Images */
+
+#donkey-kong-img {
+    position: fixed;
+    width: 15%;
+    right: 1%;
+    top: -50%;
+    z-index: -1;
+    animation: dk-slide-down 600ms forwards;
+}
+
+#purple-inkling-img {
+    position: fixed;
+    height: 20%;
+    bottom: -50%;
+    left: 4%;
+    z-index: -1;
+    animation: purple-inkling-slide-up 600ms forwards;
+}
+
+#green-inkling-img {
+    position: fixed;
+    height: 20%;
+    aspect-ratio: 1/1;
+    bottom: -50%;
+    left: 23%;
+    z-index: -1;
+    animation: green-inkling-slide-up 600ms forwards;
+}
+
+@media screen and (max-width: 1350px) {
+    #green-inkling-img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #purple-inkling-img {
+        display: none;
+    }
+    #ravioli-container {
+        width: 95%;
+    }
+}
+
+/* End Background Images */
+
+#ravioli-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    right: 100%;
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.90);
+    z-index: 999;
+    animation: ravioli-slide 5.5s forwards;
+}
+
+#ravioli-container {
+    padding: 20px;
+    max-width: 70%;
+    height: 70vh;
+    background-color: var(--dialog-background);
+    outline: 2px solid #ffffff;
+    border-radius: 4px;
+}
+
+#ravioli-img {
+    height: 100%;
+    max-width: 100%;
+    outline: 1px solid #000000;
+    display: block;
+    margin: auto;
+}
+
+#ravioli-p {
+    color: var(--text-color);
+    max-width: 90%;
+    margin: 0;
+}
+
+#ravioli-p, #ravioli-p > a {
+    font-family: var(--righteous);
+    text-align: center;
+}
+
+#ravioli-p > a {
+    word-break: break-all;
+    color: var(--light-blue);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    transition: text-underline-offset 150ms, color 150ms;
+}
+
+#ravioli-p > a:hover {
+    text-underline-offset: 6px;
+    color: var(--dark-blue);
+}
+
+@media screen and (max-width: 1200px) {
+    #ravioli-container {
+        height: 50dvh;
+        max-width: 90%;
+    }
+}
+

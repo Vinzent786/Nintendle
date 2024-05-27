@@ -1,0 +1,148 @@
+/* Game Options */
+
+#game-options {
+    height: 100dvh;
+    width: 100dvw;
+    max-width: none;
+    max-height: none;
+    border: 2px solid #ffffff;
+    background-color: var(--dialog-background);
+    color: var(--text-color);
+    top: 200%;
+    transition: top 450ms ease-in-out;
+}
+
+#game-options::backdrop {
+    visibility: hidden;
+}
+
+#close-game-options {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: fit-content;
+    display: block;
+    margin: auto;
+}
+
+#close-game-options > img {
+    width: 42px;
+    transform: rotate(180deg);
+}
+
+#close-game-options:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+#close-game-options > img {
+    transition: filter 200ms;
+}
+
+#close-game-options:hover > img {
+    filter: invert(51%) sepia(19%) saturate(1154%) hue-rotate(149deg) brightness(99%) contrast(87%);
+}
+
+#options-section {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+}
+
+#choose-franchise {
+    margin: 0;
+    text-align: center;
+    font-size: 3rem;
+    font-family: var(--righteous);
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.option-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin: auto;
+    max-width: 90%;
+}
+
+.option-container {
+    width: fit-content;
+    font-size: 2rem;
+    font-family: var(--bebas-neue);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+}
+
+.option-container > label {
+    text-decoration:  underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 200ms ease-in-out;
+    justify-self: center;
+}
+
+.option-container > input[type='checkbox'] {
+    width: 24px;
+    justify-self: center;
+}
+
+.option-container:hover > label {
+    text-decoration-color: var(--text-color);
+}
+
+#start-game {
+    margin: auto;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: var(--anton);
+    font-size: 2rem;
+    border-radius: 8px;
+    padding: 4px 12px;
+    text-decoration: underline;
+    text-underline-offset: 1px;
+    transition: color 150ms,  text-underline-offset 250ms;
+}
+
+#start-game:hover {
+    cursor: pointer;
+    color: var(--blue);
+    text-underline-offset: 8px;
+}
+
+@media screen and (max-width: 900px) {
+    #options-section {
+        gap: 30px;
+        margin-top: 40px;
+    }
+    #choose-franchise {
+        font-size: 2rem;
+    }
+    .option-container {
+        font-size: 3.5vw;
+    }
+    #start-game {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #options-section {
+        margin-top: 15px;
+    }
+    .option-container {
+        font-size: 4.5vw;
+    }
+}
+
+
+/* End Game Options */
