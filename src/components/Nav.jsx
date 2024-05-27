@@ -31,14 +31,17 @@ export default function Nav() {
             grid.style.border = '2px solid #ffffff';
             grid.style.padding = '15px';
             html2canvas(grid, {
+                scrollY: -window.scrollY,
+                width: grid.width,
+                height: grid.height,
                 backgroundColor: '#0d181f', 
                 border: '2px solid white',
                 scale: window.devicePixelRatio
             })
             .then(originalCanvas => {
                 const canvas = document.createElement('canvas');
-                canvas.width = originalCanvas.width * 2;
-                canvas.height = originalCanvas.height * 2;
+                canvas.width = originalCanvas.width;
+                canvas.height = originalCanvas.height;
     
                 const ctx = canvas.getContext('2d');
                 ctx.fillStyle = 'transparent';
