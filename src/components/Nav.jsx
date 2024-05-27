@@ -36,17 +36,19 @@ export default function Nav() {
                 scale: window.devicePixelRatio
             })
             .then(originalCanvas => {
-                const canvas = document.createElement('canvas');
-                canvas.width = originalCanvas.width;
-                canvas.height = originalCanvas.height;
-    
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = 'transparent';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(originalCanvas, 0, 0);
-                
-                screenShotContainer.innerHTML = '';
-                screenShotContainer.appendChild(canvas);
+                setTimeout(() => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = originalCanvas.width;
+                    canvas.height = originalCanvas.height;
+        
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = 'transparent';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(originalCanvas, 0, 0);
+                    
+                    screenShotContainer.innerHTML = '';
+                    screenShotContainer.appendChild(canvas);
+                }, 500);
                 dialog.showModal();
 
                 grid.removeChild(waterMark);
@@ -59,7 +61,7 @@ export default function Nav() {
     const handleCloseScreenShot = () => {
         const dialog = document.getElementById('screen-shot-dialog');
         const screenShotContainer = document.getElementById('screen-shot-container');
-        // screenShotContainer.removeChild(document.getElementsByTagName('canvas')[0]);
+        screenShotContainer.removeChild(document.getElementsByTagName('canvas')[0]);
         dialog.close();
         setScDialog(false);
     };
