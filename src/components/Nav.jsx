@@ -117,7 +117,7 @@ export default function Nav() {
     return (
         <>
         <nav id="nav">
-        <img id="pikachu-img" src="Nintendle/assets/images/pikachu.webp" alt="Pikachu" />
+        <img id="pikachu-img" src="/Nintendle/assets/images/pikachu.webp" alt="Pikachu" />
             <Link to={'/'}>
                 <h1>Nintendle</h1>
             </Link>
