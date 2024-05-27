@@ -14,73 +14,47 @@ export default function Nav() {
     const rootPath = window.location.hash === '#/' || false;
     const [scDialog, setScDialog] = useState(false);
 
-    const handleScreenShot = async () => {
-        try {
-            setScDialog(true);
-    
-            const waterMark = document.createElement('span');
-            waterMark.id = 'watermark';
-            waterMark.innerText = 'Nintendle.io';
-    
-            const grid = document.getElementById('grid-el');
-            if (!grid) throw new Error('Grid element not found');
-            grid.appendChild(waterMark);
-            
-            const dialog = document.getElementById('screen-shot-dialog');
-            const screenShotContainer = document.getElementById('screen-shot-container');
-            if (!dialog || !screenShotContainer) throw new Error('Dialog or screenshot container element not found');
-    
-            // Ensure the grid element is fully visible
-            grid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    
-            await new Promise(resolve => setTimeout(resolve, 500));
-    
-            // Temporarily set explicit dimensions to ensure full visibility
-            const gridRect = grid.getBoundingClientRect();
-            const originalWidth = grid.style.width;
-            const originalHeight = grid.style.height;
-            grid.style.width = `${gridRect.width}px`;
-            grid.style.height = `${gridRect.height}px`;
-    
+    const handleScreenShot = () => {
+        setScDialog(true);
+
+        const waterMark = document.createElement('span');
+        waterMark.id = 'watermark';
+        waterMark.innerText = 'Nintendle.io';
+
+        const grid = document.getElementById('grid-el');
+        grid.appendChild(waterMark);
+        
+        const dialog = document.getElementById('screen-shot-dialog');
+        const screenShotContainer = document.getElementById('screen-shot-container');
+
+        setTimeout(() => {
             grid.style.border = '2px solid #ffffff';
             grid.style.padding = '15px';
-    
-            const originalCanvas = await html2canvas(grid, {
-                backgroundColor: '#0d181f',
+            html2canvas(grid, {
+                backgroundColor: '#0d181f', 
                 border: '2px solid white',
-                scale: window.devicePixelRatio,
-                useCORS: true,
-                allowTaint: false
+                scale: window.devicePixelRatio
+            })
+            .then(originalCanvas => {
+                const canvas = document.createElement('canvas');
+                canvas.width = originalCanvas.width * 2;
+                canvas.height = originalCanvas.height * 2;
+    
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'transparent';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(originalCanvas, 0, 0);
+                
+                screenShotContainer.innerHTML = '';
+                screenShotContainer.appendChild(canvas);
+                dialog.showModal();
+
+                grid.removeChild(waterMark);
+                grid.style.padding = '0px';
+                grid.style.border = 'none';
             });
-    
-            if (!originalCanvas) throw new Error('Canvas generation failed');
-    
-            const canvas = document.createElement('canvas');
-            canvas.width = originalCanvas.width;
-            canvas.height = originalCanvas.height;
-    
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'transparent';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(originalCanvas, 0, 0);
-    
-            screenShotContainer.innerHTML = '';
-            screenShotContainer.appendChild(canvas);
-            dialog.showModal();
-    
-            // Restore original dimensions
-            grid.style.width = originalWidth;
-            grid.style.height = originalHeight;
-            grid.removeChild(waterMark);
-            grid.style.padding = '0px';
-            grid.style.border = 'none';
-        } catch (error) {
-            console.error('Error during screenshot handling:', error);
-        }
-    };
-    
-    
-    
+        }, 100);
+    }
 
     const handleCloseScreenShot = () => {
         const dialog = document.getElementById('screen-shot-dialog');
