@@ -33,7 +33,13 @@
 html {
     background: var(--main-background) no-repeat fixed;
     background-size: cover;
-    height: 100dvh;
+    height: 100vh;
+}
+
+@supports (height: 100svh) {
+    html {
+        height: 100svh;
+    }
 }
 
 html * {
