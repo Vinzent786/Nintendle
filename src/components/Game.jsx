@@ -220,6 +220,16 @@ export default function Game() {
         if (tempTime.length >= 5) setShowVid(true);
     }, [clickTimeStamps]);
 
+    //This is used for fixing a bug with this animation affecting the screenshot
+    useEffect(() => {
+        const contentWrapper = document.getElementById('content-wrapper');
+        contentWrapper.style.animation = 'slide-in-left  400ms forwards';
+        setTimeout(() => {
+            contentWrapper.style.animation = '';
+        }, 500);
+    }, []);
+
+
 
     return (
         <>
