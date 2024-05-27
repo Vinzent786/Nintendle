@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes } from 'react-router-dom';
+import {HashRouter, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../styles/App.css';
 import Game from './Game.jsx';
@@ -13,8 +13,6 @@ export default function App() {
   useEffect(() => {
     const loadTimerID = setTimeout(() => setLoading(false), 850);
 
-    console.log(process.env.PUBLIC_URL)
-
     return () => clearTimeout(loadTimerID);
   }, []);
 
@@ -28,7 +26,7 @@ export default function App() {
         <div id="loading-gif"></div>
       </div>
       :
-      <BrowserRouter basename={`/${process.env.PUBLIC_URL}`}>
+      <HashRouter>
         <OptionsProvider>
           <AnswerProvider>
             <GridProvider>
@@ -39,7 +37,7 @@ export default function App() {
             </GridProvider>
           </AnswerProvider>
         </OptionsProvider>
-      </BrowserRouter>
+      </HashRouter>
     }
     </>
   );
