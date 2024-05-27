@@ -31,9 +31,9 @@ export default function Nav() {
             grid.style.border = '2px solid #ffffff';
             grid.style.padding = '15px';
             html2canvas(grid, {
-                scrollY: -window.scrollY,
-                width: grid.width,
-                height: grid.height,
+                // scrollY: -window.scrollY,
+                // width: grid.width,
+                // height: grid.height,
                 backgroundColor: '#0d181f', 
                 border: '2px solid white',
                 scale: window.devicePixelRatio
@@ -46,7 +46,7 @@ export default function Nav() {
                 const ctx = canvas.getContext('2d');
                 ctx.fillStyle = 'transparent';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(originalCanvas, 0, 0);
+                ctx.drawImage(originalCanvas);
                 
                 screenShotContainer.innerHTML = '';
                 screenShotContainer.appendChild(canvas);
