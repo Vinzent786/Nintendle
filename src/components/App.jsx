@@ -13,6 +13,8 @@ export default function App() {
   useEffect(() => {
     const loadTimerID = setTimeout(() => setLoading(false), 850);
 
+    console.log(process.env.PUBLIC_URL)
+
     return () => clearTimeout(loadTimerID);
   }, []);
 
