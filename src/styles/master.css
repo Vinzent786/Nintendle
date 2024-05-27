@@ -36,11 +36,11 @@ html {
     height: 100vh;
 }
 
-@supports (height: 100dvh) {
+/* @supports (height: 100dvh) {
     html {
         height: 100dvh;
     }
-}
+} */
 
 html * {
     box-sizing: border-box;
