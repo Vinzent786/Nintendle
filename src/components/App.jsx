@@ -1,6 +1,6 @@
 import {HashRouter, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import '../styles/App.css';
+import '../styles/App.css?v=1.0';
 import Game from './Game.jsx';
 import Info from './Info.jsx';
 import { OptionsProvider } from '../helpers/options-context.jsx';

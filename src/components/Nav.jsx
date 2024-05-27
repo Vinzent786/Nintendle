@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Scores from "./Scores";
-import '../styles/nav.css';
+import '../styles/nav.css?v=1.0';
 import CustomLink from "./CustomLink";
 
 

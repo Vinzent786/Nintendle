@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { useOptionsContext } from "../helpers/options-context";
-import '../styles/gameOptions.css';
+import '../styles/gameOptions.css?v=1.0';
 const c = (x) => console.log(x);
 
 
