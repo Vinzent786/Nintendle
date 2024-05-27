@@ -230,7 +230,6 @@ export default function Game() {
     }, []);
 
 
-
     return (
         <>
         <div id="nav-wrapper">
