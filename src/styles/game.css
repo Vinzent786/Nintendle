@@ -10,8 +10,8 @@ html {
 #content-wrapper {
     display: grid;
     user-select: none;
-    transform: translateX(-100%);
-    animation: slide-in-left  400ms forwards;
+    /* transform: translateX(-100%);
+    animation: slide-in-left  400ms forwards; */
 }
 
 #main-game {
