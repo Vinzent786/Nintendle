@@ -21,13 +21,12 @@ export default function App() {
     <>
     {
       (loading) ?     
-      // <div id="loading-container">
-      //   <p>Loading...</p>
-      //   <div id="loading-gif"></div>
-      // </div>
-      <Game />
+      <div id="loading-container">
+        <p>Loading...</p>
+        <div id="loading-gif"></div>
+      </div>
       :
-      <BrowserRouter>
+      <BrowserRouter basename={`/${process.env.PUBLIC_URL}`}>
         <OptionsProvider>
           <AnswerProvider>
             <GridProvider>
