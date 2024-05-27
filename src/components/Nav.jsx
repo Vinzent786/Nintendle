@@ -16,47 +16,64 @@ export default function Nav() {
 
     const handleScreenShot = () => {
         setScDialog(true);
-
+    
         const waterMark = document.createElement('span');
         waterMark.id = 'watermark';
         waterMark.innerText = 'Nintendle.io';
-
+    
         const grid = document.getElementById('grid-el');
+        if (!grid) {
+            console.error('Grid element not found');
+            return;
+        }
         grid.appendChild(waterMark);
         
         const dialog = document.getElementById('screen-shot-dialog');
         const screenShotContainer = document.getElementById('screen-shot-container');
-
+    
+        if (!dialog || !screenShotContainer) {
+            console.error('Dialog or screenshot container element not found');
+            return;
+        }
+    
         setTimeout(() => {
             grid.style.border = '2px solid #ffffff';
             grid.style.padding = '15px';
+            
             html2canvas(grid, {
                 backgroundColor: '#0d181f', 
                 border: '2px solid white',
                 scale: window.devicePixelRatio
             })
             .then(originalCanvas => {
-                setTimeout(() => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = originalCanvas.width;
-                    canvas.height = originalCanvas.height;
-        
-                    const ctx = canvas.getContext('2d');
-                    ctx.fillStyle = 'transparent';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(originalCanvas, 0, 0);
-                    
-                    screenShotContainer.innerHTML = '';
-                    screenShotContainer.appendChild(canvas);
-                }, 500);
+                if (!originalCanvas) {
+                    console.error('Canvas generation failed');
+                    return;
+                }
+                
+                const canvas = document.createElement('canvas');
+                canvas.width = originalCanvas.width;
+                canvas.height = originalCanvas.height;
+    
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'transparent';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(originalCanvas, 0, 0);
+                
+                screenShotContainer.innerHTML = '';
+                screenShotContainer.appendChild(canvas);
                 dialog.showModal();
-
+    
                 grid.removeChild(waterMark);
                 grid.style.padding = '0px';
                 grid.style.border = 'none';
+            })
+            .catch(error => {
+                console.error('Error capturing screenshot:', error);
             });
-        }, 1000);
+        }, 500);
     }
+    
 
     const handleCloseScreenShot = () => {
         const dialog = document.getElementById('screen-shot-dialog');
