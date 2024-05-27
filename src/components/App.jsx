@@ -31,8 +31,8 @@ export default function App() {
         <AnswerProvider>
           <GridProvider>
             <Routes>
-              <Route path='/' element = {<Game />} />
-              <Route path='/info.jsx' element = {<Info />} />
+              <Route path='https://vinzent786.github.io/Nintendle/' element = {<Game />} />
+              <Route path='https://vinzent786.github.io/Nintendle//info.jsx' element = {<Info />} />
             </Routes>
           </GridProvider>
         </AnswerProvider>
