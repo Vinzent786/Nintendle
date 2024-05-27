@@ -23,6 +23,8 @@ export default function Game() {
     const handlePlayAgain = () => setPlayAgain(true);
     const [clickTimeStamps, setClickTimeStamps] = useState([]);
 
+    useEffect(() => console.log('I made it here'), []);
+
     // Re renders component and grid component with new answer
     useEffect(() => {
         if (!playAgain) return; //Guard clause to return if playAgain is false
