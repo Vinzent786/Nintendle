@@ -11,7 +11,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadTimerID = setTimeout(() => setLoading(false), 850);
+    setTimeout(() => setLoading(false), 850);
 
     // return () => clearTimeout(loadTimerID);
   }, []);
