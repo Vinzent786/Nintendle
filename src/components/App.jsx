@@ -8,18 +8,18 @@ import { AnswerProvider } from '../helpers/answer-context.jsx';
 import { GridProvider } from '../helpers/grid-context.jsx';
 
 export default function App() {
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   setTimeout(() => setLoading(false), 850);
+  useEffect(() => {
+    const loadTimerID = setTimeout(() => setLoading(false), 850);
 
-  //   // return () => clearTimeout(loadTimerID);
-  // }, []);
+    return () => clearTimeout(loadTimerID);
+  }, []);
 
 
   return (
     <>
-    {/* {
+    {
       (loading) ?     
       <div id="loading-container">
         <p>Loading...</p>
@@ -38,19 +38,7 @@ export default function App() {
         </AnswerProvider>
       </OptionsProvider>
     </BrowserRouter>
-    } */}
-    <BrowserRouter>
-      <OptionsProvider>
-        <AnswerProvider>
-          <GridProvider>
-            <Routes>
-              <Route path='/' element = {<Game />} />
-              <Route path='/info.jsx' element = {<Info />} />
-            </Routes>
-          </GridProvider>
-        </AnswerProvider>
-      </OptionsProvider>
-    </BrowserRouter>
+    }
     </>
   );
 }
