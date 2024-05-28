@@ -41,8 +41,8 @@ export default function Nav() {
             })
             .then(originalCanvas => {
                 const canvas = document.createElement('canvas');
-                canvas.width = originalCanvas.width;
-                canvas.height = originalCanvas.height;
+                canvas.width = originalCanvas.width + 2;
+                canvas.height = originalCanvas.height + 2;
     
                 const ctx = canvas.getContext('2d');
                 ctx.fillStyle = 'transparent';
