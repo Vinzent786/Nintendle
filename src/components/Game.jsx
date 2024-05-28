@@ -4,7 +4,7 @@ import Grid from './Grid.jsx';
 import GameOptions from "./GameOptions.jsx";
 import '../styles/game.css?v=1.3'
 import { useOptionsContext } from "../helpers/options-context.jsx";
-import { answersObj, checkInAnswers } from "../helpers/answers.js?v=1.0";
+import { answersObj, checkInAnswers } from "../helpers/answers.js?v=1.1";
 import { useAnswerContext } from "../helpers/answer-context.jsx";
 import { useGridContext } from "../helpers/grid-context.jsx";
 import { gameFunctions } from '../helpers/game-functions.js';
