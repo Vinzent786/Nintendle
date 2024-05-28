@@ -15,6 +15,25 @@ export default function Grid({answer}) {
         if (gridRef.current) gameReady = true;
     }, [gridState]);
 
+    const setColumnTemplate = (grid) => {
+        const screenHeight = window.innerHeight;
+        if (screenHeight >= 1000) {
+            grid.style.gridTemplateColumns = `repeat(${answerName.length}, minmax(20px, 80px))`;
+        } else {
+            grid.style.gridTemplateColumns = `repeat(${answerName.length}, minmax(20px, 50px))`;
+        }
+    }
+
+    const handleReSize = () => {
+        const grid = document.getElementById('grid-el') || null;
+        if (grid) setColumnTemplate(grid);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleReSize);
+        
+        return () => window.removeEventListener('resize', handleReSize);
+    }, []);
 
     useEffect(() => {
         document.getElementById('play-again').blur(); //Makes sure play again button isn't in focus. This helps with pressing enter for the answer not accidently triggering a new game
@@ -28,7 +47,8 @@ export default function Grid({answer}) {
         grid = document.createElement('div');
         grid.id = 'grid-el';
         grid.setAttribute('game_over', false);
-        grid.style.gridTemplateColumns = `repeat(${answerName.length}, minmax(20px, 80px))`;
+        
+        setColumnTemplate(grid);
 
         for (let row = 0; row < 6; row++) {
             for (let i = 0; i < answerName.length; i++) {

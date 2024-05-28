@@ -119,10 +119,13 @@
     text-underline-offset: 8px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 900px), screen and (max-height: 1000px) {
     #options-section {
         gap: 30px;
         margin-top: 40px;
+    }
+    #options-section label {
+        font-size: 1.5rem;
     }
     #choose-franchise {
         font-size: 2rem;
@@ -143,6 +146,5 @@
         font-size: 4.5vw;
     }
 }
-
 
 /* End Game Options */

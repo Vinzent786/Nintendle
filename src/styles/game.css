@@ -80,7 +80,26 @@ html {
 }
 
 .text-scale {
-    animation: popInChar 200ms linear;
+    animation: popInChar 200ms forwards;
+}
+
+@media screen and (max-height: 1000px) and (min-width: 800px) {
+    #main-game {
+        gap: 12px;
+    }
+    #show-franchise {
+        margin-top: 15px;
+        font-size: 1.3rem;
+    }
+    #grid-el {
+        grid-template-rows: repeat(6, minmax(20px, 50px));
+        gap: 10px;
+    }
+    .char-container {
+        height: 100%;
+        font-size: 40px;
+        margin: auto;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -88,7 +107,7 @@ html {
         gap: 12px;
     }
     .char-container {
-        font-size: 7vw;
+        font-size: 5vw;
     }
     .text-scale {
         transform: scale(1.06);
@@ -99,6 +118,9 @@ html {
 @media screen and (max-width: 500px) {
     #grid-el {
         gap: 8px;
+    }
+    .char-container {
+        font-size: 7vw;
     }
 }
 
@@ -149,7 +171,7 @@ html {
     width: 24px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800px), screen and (max-height: 1200px) {
     #kb-container, .kb-row {
         gap: 5px;
     }
@@ -206,6 +228,7 @@ html {
     height: 4rem;
     display: flex;
     align-items: center;
+    margin-bottom: 32px;
 }
 
 #play-again {

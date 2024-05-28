@@ -18,6 +18,8 @@ export default function Nav() {
     const handleScreenShot = () => {
         setScDialog(true);
 
+        window.scrollTo(0, 0);
+
         const waterMark = document.createElement('span');
         waterMark.id = 'watermark';
         waterMark.innerText = 'Nintendle.io';
@@ -32,6 +34,7 @@ export default function Nav() {
             grid.style.border = '2px solid #ffffff';
             grid.style.padding = '15px';
             html2canvas(grid, {
+                scrollY: 0,
                 backgroundColor: '#0d181f', 
                 border: '2px solid white',
                 scale: window.devicePixelRatio
