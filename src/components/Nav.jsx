@@ -35,14 +35,15 @@ export default function Nav() {
             grid.style.padding = '15px';
             html2canvas(grid, {
                 scrollY: 0,
+                scrollX: -1,
                 backgroundColor: '#0d181f', 
                 border: '2px solid white',
                 scale: window.devicePixelRatio
             })
             .then(originalCanvas => {
                 const canvas = document.createElement('canvas');
-                canvas.width = originalCanvas.width + 2;
-                canvas.height = originalCanvas.height + 2;
+                canvas.width = originalCanvas.width;
+                canvas.height = originalCanvas.height;
     
                 const ctx = canvas.getContext('2d');
                 ctx.fillStyle = 'transparent';
