@@ -42,7 +42,7 @@ export default function Nav() {
             })
             .then(originalCanvas => {
                 const canvas = document.createElement('canvas');
-                canvas.width = originalCanvas.width;
+                canvas.width = originalCanvas.width + 1;
                 canvas.height = originalCanvas.height;
     
                 const ctx = canvas.getContext('2d');
