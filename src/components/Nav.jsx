@@ -17,6 +17,9 @@ export default function Nav() {
     const handleScreenShot = () => {
         setScDialog(true);
 
+        const charContainers = Array.from(document.querySelectorAll('div.text-sclae'));
+        charContainers.forEach(char => char.classList.remove('text-scale'));
+
         window.scrollTo(0, 0);
 
         const waterMark = document.createElement('span');
@@ -56,7 +59,8 @@ export default function Nav() {
                 grid.style.padding = '0px';
                 grid.style.border = 'none';
             });
-        }, 200);
+            charContainers.forEach(char => char.classList.add('text-scale'));
+        }, 400);
     }
 
     const handleCloseScreenShot = () => {
