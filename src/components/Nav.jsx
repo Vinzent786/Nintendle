@@ -47,7 +47,7 @@ export default function Nav() {
                     scrollY: 0,
                     backgroundColor: '#0d181f', 
                     border: '2px solid white',
-                    scale: window.devicePixelRatio
+                    scale: 2
                 })
                 .then(originalCanvas => {
                     const canvas = document.createElement('canvas');
