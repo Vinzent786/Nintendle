@@ -19,6 +19,7 @@ export default function Nav() {
 
         const charContainers = Array.from(document.querySelectorAll('div.text-sclae'));
         charContainers.forEach(char => {
+            console.log(char)
             char.classList.remove('text-scale');
             const currentFontSize = window.getComputedStyle(char).fontSize;
             char.style.fontSize = `calc(${currentFontSize}-5px)`;
