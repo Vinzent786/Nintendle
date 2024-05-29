@@ -59,9 +59,7 @@ export default function Game() {
                 return genName(randomkey);    
             default:
                 for (const key in answersObj) {
-                    if (franchise === key) {
-                        return genName(key);
-                    }
+                    if (franchise === key) return genName(key);
                 }
                 break;
         }
