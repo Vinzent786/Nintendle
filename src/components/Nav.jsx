@@ -17,13 +17,15 @@ export default function Nav() {
     const handleScreenShot = () => {
         setScDialog(true);
 
-        const charContainers = Array.from(document.querySelectorAll('div.text-sclae'));
-        charContainers.forEach(char => {
-            console.log(char)
-            char.classList.remove('text-scale');
-            const currentFontSize = window.getComputedStyle(char).fontSize;
-            char.style.fontSize = `calc(${currentFontSize}-5px)`;
-        });
+        const charContainers = Array.from(document.querySelectorAll('div.text-scale'));
+        if (charContainers.length) {
+            charContainers.forEach(char => {
+                console.log(char)
+                char.classList.remove('text-scale');
+                const currentFontSize = window.getComputedStyle(char).fontSize;
+                char.style.fontSize = `calc(${currentFontSize} - 5px)`;
+            });
+        }
 
         setTimeout(() => {
             window.scrollTo(0, 0);
@@ -65,11 +67,13 @@ export default function Nav() {
                     grid.style.padding = '0px';
                     grid.style.border = 'none';
                 });
-                charContainers.forEach(char => {
-                    char.classList.add('text-scale');
-                    const currentFontSize = window.getComputedStyle(char).fontSize;
-                    char.style.fontSize = `calc(${currentFontSize}-5px)`;
-                });
+                if (charContainers.length) {
+                    charContainers.forEach(char => {
+                        char.classList.add('text-scale');
+                        const currentFontSize = window.getComputedStyle(char).fontSize;
+                        char.style.fontSize = `calc(${currentFontSize} + 5px)`;
+                    });
+                }
             }, 200);
         }, 300);
     }
