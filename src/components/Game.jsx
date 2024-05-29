@@ -20,15 +20,13 @@ export default function Game() {
     const {optionsState, setOptionsState} = useOptionsContext();
     const [showVid, setShowVid] = useState(false);
     const optionRef = useRef(optionsState);
-    const handlePlayAgain = () => {
-        window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
-        setPlayAgain(true);
-    }
+    const handlePlayAgain = () => setPlayAgain(true);
     const [clickTimeStamps, setClickTimeStamps] = useState([]);
 
     // Re renders component and grid component with new answer
     useEffect(() => {
         if (!playAgain) return; //Guard clause to return if playAgain is false
+        window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
         setAnswerState(null);
         setGridState(null);
         setPlayAgain(false);
