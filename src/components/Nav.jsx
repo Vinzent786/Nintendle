@@ -14,6 +14,78 @@ export default function Nav() {
     const rootPath = (window.location.hash !== '#/info.jsx') ? true : false;
     const [scDialog, setScDialog] = useState(false);
 
+    // const handleScreenShot = () => {
+    //     setScDialog(true);
+
+    //     const charContainers = Array.from(document.querySelectorAll('div.text-scale'));
+    //     if (charContainers.length) {
+    //         charContainers.forEach(char => {
+    //             console.log(char)
+    //             char.classList.remove('text-scale');
+    //             const currentFontSize = window.getComputedStyle(char).fontSize;
+    //             char.style.fontSize = `calc(${currentFontSize} - 5px)`;
+    //         });
+    //     }
+
+    //     setTimeout(() => {
+    //         window.scrollTo(0, 0);
+
+    //         const waterMark = document.createElement('span');
+    //         waterMark.id = 'watermark';
+    //         waterMark.innerText = 'Nintendle.io';
+    
+    //         const grid = document.getElementById('grid-el');
+    //         grid.appendChild(waterMark);
+            
+    //         const dialog = document.getElementById('screen-shot-dialog');
+    //         const screenShotContainer = document.getElementById('screen-shot-container');
+    
+    //         setTimeout(() => {
+    //             grid.style.border = '2px solid #ffffff';
+    //             grid.style.padding = '15px';
+    //             html2canvas(grid, {
+    //                 scrollY: 0,
+    //                 backgroundColor: '#0d181f', 
+    //                 border: '2px solid white',
+    //                 scale: 2
+    //             })
+    //             .then(originalCanvas => {
+    //                 const canvas = document.createElement('canvas');
+    //                 canvas.width = originalCanvas.width;
+    //                 canvas.height = originalCanvas.height;
+        
+    //                 const ctx = canvas.getContext('2d');
+    //                 ctx.fillStyle = 'transparent';
+    //                 ctx.fillRect(0, 0, canvas.width, canvas.height);
+    //                 ctx.drawImage(originalCanvas, 0, 0, canvas.width, canvas.height);
+                    
+    //                 screenShotContainer.innerHTML = '';
+    //                 screenShotContainer.appendChild(canvas);
+    //                 dialog.showModal();
+    
+    //                 grid.removeChild(waterMark);
+    //                 grid.style.padding = '0px';
+    //                 grid.style.border = 'none';
+    //             });
+    //             if (charContainers.length) {
+    //                 charContainers.forEach(char => {
+    //                     char.classList.add('text-scale');
+    //                     const currentFontSize = window.getComputedStyle(char).fontSize;
+    //                     char.style.fontSize = `calc(${currentFontSize} + 5px)`;
+    //                 });
+    //             }
+    //         }, 200);
+    //     }, 300);
+    // }
+
+    // const handleCloseScreenShot = () => {
+    //     const dialog = document.getElementById('screen-shot-dialog');
+    //     const screenShotContainer = document.getElementById('screen-shot-container');
+    //     screenShotContainer.removeChild(document.getElementsByTagName('canvas')[0]);
+    //     dialog.close();
+    //     setScDialog(false);
+    // };
+
     const handleScreenShot = () => {
         setScDialog(true);
 
@@ -43,30 +115,24 @@ export default function Nav() {
             setTimeout(() => {
                 grid.style.border = '2px solid #ffffff';
                 grid.style.padding = '15px';
-                html2canvas(grid, {
-                    scrollY: 0,
-                    backgroundColor: '#0d181f', 
-                    border: '2px solid white',
-                    scale: 2
-                })
-                .then(originalCanvas => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = originalCanvas.width;
-                    canvas.height = originalCanvas.height;
-        
-                    const ctx = canvas.getContext('2d');
-                    ctx.fillStyle = 'transparent';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(originalCanvas, 0, 0, canvas.width, canvas.height);
-                    
-                    screenShotContainer.innerHTML = '';
-                    screenShotContainer.appendChild(canvas);
-                    dialog.showModal();
-    
-                    grid.removeChild(waterMark);
-                    grid.style.padding = '0px';
-                    grid.style.border = 'none';
-                });
+
+                domtoimage.toPng(grid)
+                    .then(dataUrl => {
+                        const img = new Image();
+                        img.src = dataUrl;
+
+                        screenShotContainer.innerHTML = '';
+                        screenShotContainer.appendChild(img);
+                        dialog.showModal();
+
+                        grid.removeChild(waterMark);
+                        grid.style.padding = '0px';
+                        grid.style.border = 'none';
+                    })
+                    .catch(error => {
+                        console.error('oops, something went wrong!', error);
+                    });
+
                 if (charContainers.length) {
                     charContainers.forEach(char => {
                         char.classList.add('text-scale');
@@ -81,17 +147,17 @@ export default function Nav() {
     const handleCloseScreenShot = () => {
         const dialog = document.getElementById('screen-shot-dialog');
         const screenShotContainer = document.getElementById('screen-shot-container');
-        screenShotContainer.removeChild(document.getElementsByTagName('canvas')[0]);
+        screenShotContainer.innerHTML = '';
         dialog.close();
         setScDialog(false);
     };
 
     const handleDownload = () => {
         const dialog = document.getElementById('screen-shot-dialog');
-        const screenShot = document.getElementsByTagName('canvas')[0];
+        const screenShot = document.getElementsByTagName('img')[0];
         const link = document.createElement('a');
         link.download = 'Nintendle Screenshot.png';
-        link.href = screenShot.toDataURL('image/png');
+        link.href = screenShot.src;
         link.click();
         if (document.getElementById('check-mark')) return;
         const checkMark = document.createElement('div');
@@ -101,9 +167,26 @@ export default function Nav() {
         img.alt = 'Check Mark Icon';
         checkMark.appendChild(img);
         dialog.appendChild(checkMark);
-
-
     }
+
+    // const handleDownload = () => {
+    //     const dialog = document.getElementById('screen-shot-dialog');
+    //     const screenShot = document.getElementsByTagName('canvas')[0];
+    //     const link = document.createElement('a');
+    //     link.download = 'Nintendle Screenshot.png';
+    //     link.href = screenShot.toDataURL('image/png');
+    //     link.click();
+    //     if (document.getElementById('check-mark')) return;
+    //     const checkMark = document.createElement('div');
+    //     checkMark.id = 'check-mark';
+    //     const img = document.createElement('img');
+    //     img.src = '/assets/icons/check-mark-icon.svg';
+    //     img.alt = 'Check Mark Icon';
+    //     checkMark.appendChild(img);
+    //     dialog.appendChild(checkMark);
+
+
+    // }
 
     useEffect(() => {
         if (scDialog) return;
