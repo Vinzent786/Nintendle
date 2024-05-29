@@ -24,51 +24,53 @@ export default function Nav() {
             char.style.fontSize = `calc(${currentFontSize}-5px)`;
         });
 
-        window.scrollTo(0, 0);
-
-        const waterMark = document.createElement('span');
-        waterMark.id = 'watermark';
-        waterMark.innerText = 'Nintendle.io';
-
-        const grid = document.getElementById('grid-el');
-        grid.appendChild(waterMark);
-        
-        const dialog = document.getElementById('screen-shot-dialog');
-        const screenShotContainer = document.getElementById('screen-shot-container');
-
         setTimeout(() => {
-            grid.style.border = '2px solid #ffffff';
-            grid.style.padding = '15px';
-            html2canvas(grid, {
-                scrollY: 0,
-                backgroundColor: '#0d181f', 
-                border: '2px solid white',
-                scale: window.devicePixelRatio
-            })
-            .then(originalCanvas => {
-                const canvas = document.createElement('canvas');
-                canvas.width = originalCanvas.width;
-                canvas.height = originalCanvas.height;
-    
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = 'transparent';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(originalCanvas, 0, 0, canvas.width, canvas.height);
-                
-                screenShotContainer.innerHTML = '';
-                screenShotContainer.appendChild(canvas);
-                dialog.showModal();
+            window.scrollTo(0, 0);
 
-                grid.removeChild(waterMark);
-                grid.style.padding = '0px';
-                grid.style.border = 'none';
-            });
-            charContainers.forEach(char => {
-                char.classList.add('text-scale');
-                const currentFontSize = window.getComputedStyle(char).fontSize;
-                char.style.fontSize = `calc(${currentFontSize}-5px)`;
-            });
-        }, 400);
+            const waterMark = document.createElement('span');
+            waterMark.id = 'watermark';
+            waterMark.innerText = 'Nintendle.io';
+    
+            const grid = document.getElementById('grid-el');
+            grid.appendChild(waterMark);
+            
+            const dialog = document.getElementById('screen-shot-dialog');
+            const screenShotContainer = document.getElementById('screen-shot-container');
+    
+            setTimeout(() => {
+                grid.style.border = '2px solid #ffffff';
+                grid.style.padding = '15px';
+                html2canvas(grid, {
+                    scrollY: 0,
+                    backgroundColor: '#0d181f', 
+                    border: '2px solid white',
+                    scale: window.devicePixelRatio
+                })
+                .then(originalCanvas => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = originalCanvas.width;
+                    canvas.height = originalCanvas.height;
+        
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = 'transparent';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(originalCanvas, 0, 0, canvas.width, canvas.height);
+                    
+                    screenShotContainer.innerHTML = '';
+                    screenShotContainer.appendChild(canvas);
+                    dialog.showModal();
+    
+                    grid.removeChild(waterMark);
+                    grid.style.padding = '0px';
+                    grid.style.border = 'none';
+                });
+                charContainers.forEach(char => {
+                    char.classList.add('text-scale');
+                    const currentFontSize = window.getComputedStyle(char).fontSize;
+                    char.style.fontSize = `calc(${currentFontSize}-5px)`;
+                });
+            }, 200);
+        }, 300);
     }
 
     const handleCloseScreenShot = () => {
