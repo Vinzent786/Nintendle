@@ -6,6 +6,7 @@ import { useGridContext } from "../helpers/grid-context.jsx";
 
 export default function Grid({answer}) {
     const [answerFranchise, answerName] = answer;
+    console.log(answer);
     const {gridState, setGridState} = useGridContext();
     let gridRef = useRef(gridState);
     let gameReady = false;

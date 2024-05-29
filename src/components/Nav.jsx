@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Scores from "./Scores";
-import '../styles/nav.css?v=1.0';
+import '../styles/nav.css?v=1.1';
 import CustomLink from "./CustomLink";
 
 
@@ -11,7 +11,6 @@ export default function Nav() {
     const handleNavHeight = (height) => setNavHeight(height);
     const [scoresClicked, setScoresClicked] = useState(false);
     const [customLinkClicked, setCustomLinkClicked] = useState(false);
-    // const rootPath = (window.location.hash === '#/' || window.location.hash === '') ? true : false;
     const rootPath = (window.location.hash !== '#/info.jsx') ? true : false;
     const [scDialog, setScDialog] = useState(false);
 

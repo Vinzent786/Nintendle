@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Nav from './Nav.jsx';
-import '../styles/info.css?v=1.0';
+import '../styles/info.css?v=1.1';
 
 
 export default function Info() {

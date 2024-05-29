@@ -161,6 +161,7 @@
     top: 0;
     right: 100%;
     width: 100vw;
+    height: 100vh;
     height: 100dvh;
     background-color: rgba(0, 0, 0, 0.90);
     z-index: 999;
@@ -210,6 +211,7 @@
 
 @media screen and (max-width: 1200px) {
     #ravioli-container {
+        height: 50vh;
         height: 50dvh;
         max-width: 90%;
     }
