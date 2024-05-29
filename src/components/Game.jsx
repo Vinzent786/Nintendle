@@ -20,7 +20,10 @@ export default function Game() {
     const {optionsState, setOptionsState} = useOptionsContext();
     const [showVid, setShowVid] = useState(false);
     const optionRef = useRef(optionsState);
-    const handlePlayAgain = () => setPlayAgain(true);
+    const handlePlayAgain = () => {
+        window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
+        setPlayAgain(true);
+    }
     const [clickTimeStamps, setClickTimeStamps] = useState([]);
 
     // Re renders component and grid component with new answer
