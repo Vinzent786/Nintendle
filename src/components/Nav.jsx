@@ -99,49 +99,47 @@ export default function Nav() {
             });
         }
 
+        window.scrollTo(0, 0);
+
+        const waterMark = document.createElement('span');
+        waterMark.id = 'watermark';
+        waterMark.innerText = 'Nintendle.io';
+
+        const grid = document.getElementById('grid-el');
+        grid.appendChild(waterMark);
+        
+        const dialog = document.getElementById('screen-shot-dialog');
+        const screenShotContainer = document.getElementById('screen-shot-container');
+
         setTimeout(() => {
-            window.scrollTo(0, 0);
+            grid.style.border = '2px solid #ffffff';
+            grid.style.padding = '15px';
 
-            const waterMark = document.createElement('span');
-            waterMark.id = 'watermark';
-            waterMark.innerText = 'Nintendle.io';
-    
-            const grid = document.getElementById('grid-el');
-            grid.appendChild(waterMark);
-            
-            const dialog = document.getElementById('screen-shot-dialog');
-            const screenShotContainer = document.getElementById('screen-shot-container');
-    
-            setTimeout(() => {
-                grid.style.border = '2px solid #ffffff';
-                grid.style.padding = '15px';
+            domtoimage.toPng(grid)
+                .then(dataUrl => {
+                    const img = new Image();
+                    img.src = dataUrl;
 
-                domtoimage.toPng(grid)
-                    .then(dataUrl => {
-                        const img = new Image();
-                        img.src = dataUrl;
+                    screenShotContainer.innerHTML = '';
+                    screenShotContainer.appendChild(img);
+                    dialog.showModal();
 
-                        screenShotContainer.innerHTML = '';
-                        screenShotContainer.appendChild(img);
-                        dialog.showModal();
+                    grid.removeChild(waterMark);
+                    grid.style.padding = '0px';
+                    grid.style.border = 'none';
+                })
+                .catch(error => {
+                    console.error('oops, something went wrong!', error);
+                });
 
-                        grid.removeChild(waterMark);
-                        grid.style.padding = '0px';
-                        grid.style.border = 'none';
-                    })
-                    .catch(error => {
-                        console.error('oops, something went wrong!', error);
-                    });
-
-                if (charContainers.length) {
-                    charContainers.forEach(char => {
-                        char.classList.add('text-scale');
-                        const currentFontSize = window.getComputedStyle(char).fontSize;
-                        char.style.fontSize = `calc(${currentFontSize} + 5px)`;
-                    });
-                }
-            }, 200);
-        }, 300);
+            if (charContainers.length) {
+                charContainers.forEach(char => {
+                    char.classList.add('text-scale');
+                    const currentFontSize = window.getComputedStyle(char).fontSize;
+                    char.style.fontSize = `calc(${currentFontSize} + 5px)`;
+                });
+            }
+        }, 200);
     }
 
     const handleCloseScreenShot = () => {
