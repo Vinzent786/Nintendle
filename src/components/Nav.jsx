@@ -18,7 +18,11 @@ export default function Nav() {
         setScDialog(true);
 
         const charContainers = Array.from(document.querySelectorAll('div.text-sclae'));
-        charContainers.forEach(char => char.classList.remove('text-scale'));
+        charContainers.forEach(char => {
+            char.classList.remove('text-scale');
+            const currentFontSize = window.getComputedStyle(char).fontSize;
+            char.style.fontSize = `calc(${currentFontSize}-5px)`;
+        });
 
         window.scrollTo(0, 0);
 
@@ -59,7 +63,11 @@ export default function Nav() {
                 grid.style.padding = '0px';
                 grid.style.border = 'none';
             });
-            charContainers.forEach(char => char.classList.add('text-scale'));
+            charContainers.forEach(char => {
+                char.classList.add('text-scale');
+                const currentFontSize = window.getComputedStyle(char).fontSize;
+                char.style.fontSize = `calc(${currentFontSize}-5px)`;
+            });
         }, 400);
     }
 
