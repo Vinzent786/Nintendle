@@ -12,11 +12,6 @@ const gameFunctions = {
         }
         return validName;
     },
-    showFranchise: function(element, answerFranchise) {
-        element.innerText = answerFranchise.toUpperCase();
-        element.style.textDecoration = 'underline';
-        element.classList.remove('show-franchise-hover');
-    },
     handleInput: function(grid, key, answerName) {
         const gridDivs = Array.from(grid.children);
         const allowedChars = /^[A-Z]{1}$/;

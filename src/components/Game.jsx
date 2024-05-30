@@ -35,14 +35,18 @@ export default function Game() {
 
     //Used to decide wether to show the franchise
     const decideShowFranchise = () => {
+        const showFranchise = document.getElementById('show-franchise');
         if (optionsState.length === 1 ) {
             if (optionsState[0] === 'all') {
                 setFranchiseShown(false);
+                showFranchise.setAttribute('data-shown', false);
             } else {
                 setFranchiseShown(true);
+                showFranchise.setAttribute('data-shown', true);
             }
         } else {
             setFranchiseShown(false);
+            showFranchise.setAttribute('data-shown', false);
         }
     }
 
@@ -123,8 +127,10 @@ export default function Game() {
         const [answerFranchise, answerName] = answerState;
         const showFranchise = document.getElementById('show-franchise');
         const handleShowFranchise = () => {
+            if (showFranchise.getAttribute('data-shown') === 'true') return;
             gameFunctions.showFranchise(showFranchise, answerFranchise);
             setFranchiseShown(true);
+            showFranchise.setAttribute('data-shown', true);
         }
         //This is for checking if the franchise was shown or not previously and how it should be displayed based off of that
         if (!franchiseShown) {
@@ -227,6 +233,15 @@ export default function Game() {
             contentWrapper.style.animation = '';
         }, 500);
     }, []);
+
+    // useEffect(() => {
+    //     const showFranchise = document.getElementById('show-franchise');
+    //     if (franchiseShown) {
+    //         showFranchise.setAttribute('data-shown', true);
+    //     } else {
+    //         showFranchise.setAttribute('data-shown', false);
+    //     }
+    // }, [franchiseShown]);
 
 
     return (
