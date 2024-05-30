@@ -106,6 +106,7 @@ export default function Nav() {
         waterMark.innerText = 'Nintendle.io';
 
         const grid = document.getElementById('grid-el');
+        grid.style.transform = 'translateX(-100%)';
         grid.appendChild(waterMark);
         
         const dialog = document.getElementById('screen-shot-dialog');
