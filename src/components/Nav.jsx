@@ -89,13 +89,17 @@ export default function Nav() {
     const handleScreenShot = () => {
         setScDialog(true);
 
+        const contentWrapper = document.getElementById('content-wrapper');
+
+        contentWrapper.style.transform = 'translateX(-100%)';
+
         const charContainers = Array.from(document.querySelectorAll('div.text-scale'));
         if (charContainers.length) {
             charContainers.forEach(char => {
                 console.log(char)
                 char.classList.remove('text-scale');
                 const currentFontSize = window.getComputedStyle(char).fontSize;
-                char.style.fontSize = `calc(${currentFontSize} - 5px)`;
+                char.style.fontSize = `calc(${currentFontSize} - 2px)`;
             });
         }
 
@@ -106,7 +110,6 @@ export default function Nav() {
         waterMark.innerText = 'Nintendle.io';
 
         const grid = document.getElementById('grid-el');
-        grid.style.transform = 'translateX(-100%)';
         grid.appendChild(waterMark);
         
         const dialog = document.getElementById('screen-shot-dialog');
@@ -137,9 +140,10 @@ export default function Nav() {
                 charContainers.forEach(char => {
                     char.classList.add('text-scale');
                     const currentFontSize = window.getComputedStyle(char).fontSize;
-                    char.style.fontSize = `calc(${currentFontSize} + 5px)`;
+                    char.style.fontSize = `calc(${currentFontSize} + 2px)`;
                 });
             }
+            contentWrapper.style.transform = 'translateX(0%)';
         }, 200);
     }
 
