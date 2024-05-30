@@ -106,7 +106,7 @@ export default function Nav() {
         waterMark.innerText = 'Nintendle.io';
 
         const grid = document.getElementById('grid-el');
-        grid.style.position = 'absolute';
+        grid.style.transform = 'translateX(0)';
         grid.appendChild(waterMark);
         
         const dialog = document.getElementById('screen-shot-dialog');
@@ -140,7 +140,6 @@ export default function Nav() {
                     char.style.fontSize = `calc(${currentFontSize} + 2px)`;
                 });
             }
-            grid.style.position = 'relative';
         }, 200);
     }
 
