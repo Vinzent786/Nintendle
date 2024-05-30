@@ -7,7 +7,6 @@ import { useOptionsContext } from "../helpers/options-context.jsx";
 import { answersObj, checkInAnswers } from "../helpers/answers.js?v=1.1";
 import { useAnswerContext } from "../helpers/answer-context.jsx";
 import { useGridContext } from "../helpers/grid-context.jsx";
-import { gameFunctions } from '../helpers/game-functions.js';
 
 export default function Game() {
     const {
@@ -22,6 +21,11 @@ export default function Game() {
     const optionRef = useRef(optionsState);
     const handlePlayAgain = () => setPlayAgain(true);
     const [clickTimeStamps, setClickTimeStamps] = useState([]);
+    let answerFranchise;
+    let answerName;
+    if (answerState) [answerFranchise, answerName] = answerState;
+
+    console.log(answerName)
 
     // Re renders component and grid component with new answer
     useEffect(() => {
@@ -35,18 +39,14 @@ export default function Game() {
 
     //Used to decide wether to show the franchise
     const decideShowFranchise = () => {
-        const showFranchise = document.getElementById('show-franchise');
         if (optionsState.length === 1 ) {
             if (optionsState[0] === 'all') {
                 setFranchiseShown(false);
-                showFranchise.setAttribute('data-shown', false);
             } else {
                 setFranchiseShown(true);
-                showFranchise.setAttribute('data-shown', true);
             }
         } else {
             setFranchiseShown(false);
-            showFranchise.setAttribute('data-shown', false);
         }
     }
 
@@ -121,30 +121,34 @@ export default function Game() {
         setPlayAgain(true);
     }, [optionsState]);
 
+    const handleShowFranchise = (el) => {
+        el.innerText = answerFranchise.toUpperCase();
+        el.classList.remove('show-franchise-hover');
+        el.style.textDecoration = 'underline';
+        setFranchiseShown(true);
+    }
+
     //This hook is used for handling the button to show which franchise the answer is from
     useEffect(() => {
         if (!answerState) return;
-        const [answerFranchise, answerName] = answerState;
         const showFranchise = document.getElementById('show-franchise');
-        const handleShowFranchise = () => {
-            if (showFranchise.getAttribute('data-shown') === 'true') return;
-            gameFunctions.showFranchise(showFranchise, answerFranchise);
-            setFranchiseShown(true);
-            showFranchise.setAttribute('data-shown', true);
-        }
+
+        const handleShow = () => handleShowFranchise(showFranchise);
+
         //This is for checking if the franchise was shown or not previously and how it should be displayed based off of that
         if (!franchiseShown) {
             showFranchise.classList.add('show-franchise-hover');
             showFranchise.innerText = 'SHOW WHICH FRANCHISE NAME IS FROM';
-            showFranchise.addEventListener('click', () => handleShowFranchise());
+            showFranchise.addEventListener('click', handleShow);
         } else if (franchiseShown) {
             showFranchise.innerText = answerFranchise;
-        } 
+            showFranchise.style.textDecoration = 'underline';
+        }
 
         return () => {
-            showFranchise.removeEventListener('click', () => handleShowFranchise());
-        }
-    }, [answerState]);
+            showFranchise.removeEventListener('click', handleShow);
+        };
+    }, [answerState, franchiseShown, answerFranchise]);
 
     //Hook to run on first mount to handle display of the game
     useEffect(() => {
@@ -233,15 +237,6 @@ export default function Game() {
             contentWrapper.style.animation = '';
         }, 500);
     }, []);
-
-    // useEffect(() => {
-    //     const showFranchise = document.getElementById('show-franchise');
-    //     if (franchiseShown) {
-    //         showFranchise.setAttribute('data-shown', true);
-    //     } else {
-    //         showFranchise.setAttribute('data-shown', false);
-    //     }
-    // }, [franchiseShown]);
 
 
     return (
