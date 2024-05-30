@@ -113,12 +113,12 @@ export default function Nav() {
         setTimeout(() => {
             window.scrollTo(0, 0);
 
-            const waterMark = document.createElement('span');
-            waterMark.id = 'watermark';
-            waterMark.innerText = 'Nintendle.io';
+            // const waterMark = document.createElement('span');
+            // waterMark.id = 'watermark';
+            // waterMark.innerText = 'Nintendle.io';
     
             const grid = document.getElementById('grid-el');
-            grid.appendChild(waterMark);
+            // grid.appendChild(waterMark);
             
             const dialog = document.getElementById('screen-shot-dialog');
             const screenShotContainer = document.getElementById('screen-shot-container');
@@ -146,7 +146,7 @@ export default function Nav() {
                     screenShotContainer.appendChild(canvas);
                     dialog.showModal();
     
-                    grid.removeChild(waterMark);
+                    // grid.removeChild(waterMark);
                     grid.style.padding = '0px';
                     grid.style.border = 'none';
                 });
