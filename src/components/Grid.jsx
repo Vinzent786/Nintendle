@@ -1,12 +1,11 @@
 import { useEffect, useRef } from "react";
 import Keyboard from "./Keyboard.jsx";
-import { gameFunctions } from "../helpers/game-functions.js";
+import { gameFunctions } from "../helpers/game-functions.js?v=1.1";
 import { useGridContext } from "../helpers/grid-context.jsx";
 
 
 export default function Grid({answer}) {
     const [answerFranchise, answerName] = answer;
-    console.log(answer);
     const {gridState, setGridState} = useGridContext();
     let gridRef = useRef(gridState);
     let gameReady = false;

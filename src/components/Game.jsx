@@ -25,8 +25,6 @@ export default function Game() {
     let answerName;
     if (answerState) [answerFranchise, answerName] = answerState;
 
-    console.log(answerName)
-
     // Re renders component and grid component with new answer
     useEffect(() => {
         if (!playAgain) return; //Guard clause to return if playAgain is false
