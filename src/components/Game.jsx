@@ -173,6 +173,7 @@ export default function Game() {
     }
 
     useEffect(() => {
+        if (window.innerWidth < 700) return;
         const dialog = document.getElementById('beedle-dialog');
         if (!showVid) {
             dialog.classList.remove('beedle-slide-in');
