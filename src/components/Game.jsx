@@ -173,7 +173,6 @@ export default function Game() {
     }
 
     useEffect(() => {
-        if (window.innerWidth < 700) return;
         const dialog = document.getElementById('beedle-dialog');
         if (!showVid) {
             dialog.classList.remove('beedle-slide-in');
@@ -221,11 +220,11 @@ export default function Game() {
     }
 
     useEffect(() => {
-        if (showVid) return;
+        if (showVid || window.innerWidth < 700) return;
         const currentTime = new Date().getTime();
         const tempTime = clickTimeStamps
         .filter(time => currentTime - time < 1000);
-        if (tempTime.length >= 5) setShowVid(true);
+        if (tempTime.length >= 7) setShowVid(true);
     }, [clickTimeStamps]);
 
     //This is used for fixing a bug with this animation affecting the screenshot
