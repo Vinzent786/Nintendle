@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Keyboard from "./Keyboard.jsx";
-import { gameFunctions } from "../helpers/game-functions.js?v=1.1";
+import { gameFunctions } from "../helpers/game-functions.js?v=1.2";
 import { useGridContext } from "../helpers/grid-context.jsx";
 
 
